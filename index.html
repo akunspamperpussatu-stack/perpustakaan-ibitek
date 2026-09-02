@@ -100,15 +100,35 @@
         box-shadow: 0 8px 20px rgba(0,0,0,0.25);
       }
 
-      .card-layanan, .card-akses, .card-jam, .card-info, .card-fasilitas, .card-vmt {
+      .card-layanan, .card-akses, .card-jam, .card-info, .card-fasilitas, .card-vmt, .card-galeri {
         border: none;
         border-radius: 14px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         transition: transform 0.2s, box-shadow 0.2s;
       }
-      .card-layanan:hover, .card-akses:hover, .card-jam:hover, .card-info:hover, .card-fasilitas:hover, .card-vmt:hover {
+      .card-layanan:hover, .card-akses:hover, .card-jam:hover, .card-info:hover, .card-fasilitas:hover, .card-vmt:hover, .card-galeri:hover {
         transform: translateY(-4px);
         box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      }
+
+      /* STYLE KHUSUS GAMBAR GALERI (AUTO ZOOM & TANPA DESKRIPSI) */
+      .galeri-img {
+        height: 220px;
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        border-radius: 14px;
+        transform: scale(1.08); /* Efek zoom untuk potong garis hitam */
+        transition: transform 0.3s ease;
+      }
+
+      .card-galeri {
+        border-radius: 14px;
+        overflow: hidden;
+      }
+
+      .card-galeri:hover .galeri-img {
+        transform: scale(1.15); /* Efek zoom saat kursor di atas gambar */
       }
 
       /* JAM LAYANAN OPERASIONAL */
@@ -210,6 +230,7 @@
             <li class="nav-item"><a class="nav-link" href="#jam-operasional">Jam Buka</a></li>
             <li class="nav-item"><a class="nav-link" href="#tata-tertib">Tata Tertib</a></li>
             <li class="nav-item"><a class="nav-link" href="#fasilitas">Fasilitas</a></li>
+            <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
             <li class="nav-item"><a class="nav-link" href="#faq-section">FAQ</a></li>
             <li class="nav-item"><a class="nav-link" href="#kontak-lokasi">Kontak</a></li>
           </ul>
@@ -407,7 +428,7 @@
       <!-- Section Tata Tertib, Peminjaman & Larangan -->
       <h3 id="tata-tertib" class="text-center mb-4 text-primary fw-semibold pt-3">Keanggotaan & Tata Tertib Perpustakaan</h3>
       <div class="row g-4 mb-5">
-        <!-- Syarat Keanggotaan (DENGAN TOMBOL GOOGLE FORM) -->
+        <!-- Syarat Keanggotaan -->
         <div class="col-md-6 col-lg-4">
           <div class="card h-100 card-info p-4 bg-white d-flex flex-column justify-content-between">
             <div>
@@ -421,7 +442,6 @@
                 <li class="list-group-item bg-transparent ps-0"><i class="fas fa-check-circle text-success me-2"></i>Status keanggotaan berlaku bagi seluruh civitas akademika IBITEK.</li>
               </ul>
             </div>
-            <!-- Tombol Form Anggota -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeOenzcAemif3pVDhodeTo0zDJlJyILdtNxM3W0oiJF2LbrCA/viewform" target="_blank" class="btn btn-primary w-100 rounded-pill">
               <i class="fas fa-file-alt me-2"></i>Daftar Anggota Online
             </a>
@@ -487,6 +507,31 @@
           <div class="card card-fasilitas p-3 bg-white h-100">
             <i class="fas fa-desktop fa-2x text-primary mb-2"></i>
             <h6 class="fw-bold m-0">PC Komputer OPAC</h6>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION GALERI SUASANA PERPUSTAKAAN (CLEAN & PRESI) -->
+      <h3 id="galeri" class="text-center mb-4 text-primary fw-semibold pt-3">Galeri Suasana Perpustakaan</h3>
+      <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-galeri h-100 bg-white shadow-sm">
+            <img src="https://i.postimg.cc/Qx394Jkx/Save-Clip-App-555058861-18420991876109569-7792794696814904420-n.webp" class="galeri-img" alt="Suasana Perpustakaan 1">
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-galeri h-100 bg-white shadow-sm">
+            <img src="https://i.postimg.cc/TY6L7Jqp/Save-Clip-App-556858153-18420991888109569-7664783634564658134-n.webp" class="galeri-img" alt="Suasana Perpustakaan 2">
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-galeri h-100 bg-white shadow-sm">
+            <img src="https://i.postimg.cc/02F31rjf/Save-Clip-App-656046902-18082486406067598-4979240963345344318-n.webp" class="galeri-img" alt="Suasana Perpustakaan 3">
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+          <div class="card card-galeri h-100 bg-white shadow-sm">
+            <img src="https://i.postimg.cc/g0qBhDDr/Save-Clip-App-661312061-18384826459089149-475833408658146183-n.webp" class="galeri-img" alt="Suasana Perpustakaan 4">
           </div>
         </div>
       </div>
