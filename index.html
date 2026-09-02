@@ -151,7 +151,6 @@
       .btn-yt { background-color: #FF0000; }
       .btn-maps { background-color: #ea4335; }
       .btn-email { background-color: #6c757d; }
-      /* Style Tambahan untuk Tombol Web Kampus & SIAKAD */
       .btn-web { background-color: #0284c7; }
       .btn-siakad { background-color: #4f46e5; }
 
@@ -408,18 +407,24 @@
       <!-- Section Tata Tertib, Peminjaman & Larangan -->
       <h3 id="tata-tertib" class="text-center mb-4 text-primary fw-semibold pt-3">Keanggotaan & Tata Tertib Perpustakaan</h3>
       <div class="row g-4 mb-5">
-        <!-- Syarat Keanggotaan -->
+        <!-- Syarat Keanggotaan (DENGAN TOMBOL GOOGLE FORM) -->
         <div class="col-md-6 col-lg-4">
-          <div class="card h-100 card-info p-4 bg-white">
-            <div class="d-flex align-items-center mb-3">
-              <i class="fas fa-id-card fa-2x text-primary me-3"></i>
-              <h4 class="fw-bold m-0 text-dark">Syarat Keanggotaan</h4>
+          <div class="card h-100 card-info p-4 bg-white d-flex flex-column justify-content-between">
+            <div>
+              <div class="d-flex align-items-center mb-3">
+                <i class="fas fa-id-card fa-2x text-primary me-3"></i>
+                <h4 class="fw-bold m-0 text-dark">Syarat Keanggotaan</h4>
+              </div>
+              <ul class="list-group list-group-flush mb-3">
+                <li class="list-group-item bg-transparent ps-0"><i class="fas fa-check-circle text-success me-2"></i>Membawa Kartu Tanda Mahasiswa (KTM) aktif.</li>
+                <li class="list-group-item bg-transparent ps-0"><i class="fas fa-check-circle text-success me-2"></i>Mengisi formulir pendaftaran anggota secara online.</li>
+                <li class="list-group-item bg-transparent ps-0"><i class="fas fa-check-circle text-success me-2"></i>Status keanggotaan berlaku bagi seluruh civitas akademika IBITEK.</li>
+              </ul>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-transparent ps-0"><i class="fas fa-check-circle text-success me-2"></i>Membawa Kartu Tanda Mahasiswa (KTM) aktif.</li>
-              <li class="list-group-item bg-transparent ps-0"><i class="fas fa-check-circle text-success me-2"></i>Mengisi formulir pendaftaran anggota melalui Google Form resmi.</li>
-              <li class="list-group-item bg-transparent ps-0"><i class="fas fa-check-circle text-success me-2"></i>Status keanggotaan berlaku bagi seluruh civitas akademika IBITEK.</li>
-            </ul>
+            <!-- Tombol Form Anggota -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeOenzcAemif3pVDhodeTo0zDJlJyILdtNxM3W0oiJF2LbrCA/viewform" target="_blank" class="btn btn-primary w-100 rounded-pill">
+              <i class="fas fa-file-alt me-2"></i>Daftar Anggota Online
+            </a>
           </div>
         </div>
 
@@ -571,7 +576,6 @@
               <a href="https://maps.app.goo.gl/DG57f7UJqf7NKU6K8" target="_blank" class="btn btn-social btn-maps mb-2">
                 <i class="fas fa-map-marked-alt me-2"></i> Google Maps
               </a>
-              <!-- Tautan Resmi Tambahan -->
               <a href="https://ibitek.ac.id/" target="_blank" class="btn btn-social btn-web mb-2">
                 <i class="fas fa-globe me-2"></i> Web IBITEK
               </a>
