@@ -207,7 +207,7 @@
       .card-vmt ol li { font-weight: 500 !important; color: #334155 !important; line-height: 1.6; }
       .card-vmt ol li strong { font-weight: 700 !important; color: #0f172a !important; }
 
-      /* TAMPILAN BARU: GALERI SUASANA PERPUSTAKAAN */
+      /* GALERI POLOS TANPA PENJELASAN TEKS */
       .galeri-wrapper {
         position: relative;
         border-radius: 16px;
@@ -231,33 +231,10 @@
       }
 
       .galeri-wrapper:hover .galeri-img {
-        transform: scale(1.08);
+        transform: scale(1.05);
       }
 
-      .galeri-overlay {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(180deg, rgba(15, 23, 42, 0) 40%, rgba(15, 23, 42, 0.85) 100%);
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 16px;
-        color: #ffffff;
-      }
-
-      .galeri-caption {
-        font-size: 0.95rem;
-        font-weight: 600;
-        margin: 0;
-        transform: translateY(5px);
-        transition: transform 0.3s ease;
-      }
-
-      .galeri-wrapper:hover .galeri-caption {
-        transform: translateY(0);
-      }
-
-      /* TAMPILAN BARU: LAYANAN KAMI */
+      /* LAYANAN KAMI */
       .card-layanan-modern {
         border: 1px solid #e2e8f0;
         border-radius: 16px;
@@ -681,7 +658,7 @@
         </div>
       </div>
 
-      <!-- GALERI SUASANA PERPUSTAKAAN (DESAIN BARU INTERAKTIF) -->
+      <!-- GALERI SUASANA PERPUSTAKAAN (POLOS TANPA PENJELASAN) -->
       <div id="galeri" class="pt-3 mb-5">
         <div class="text-center mb-4">
           <h3 class="text-navy fw-bold mb-1">Galeri Suasana Perpustakaan</h3>
@@ -689,41 +666,29 @@
         </div>
         <div class="row g-4">
           <div class="col-md-6 col-lg-3">
-            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/12-AY_4CvTpN9PIISM6qUELGxrZKtHemU', 'Suasana Ruang Baca & Diskusi Lesehan Perpustakaan IBITEK')">
-              <img src="https://lh3.googleusercontent.com/d/12-AY_4CvTpN9PIISM6qUELGxrZKtHemU" class="galeri-img" alt="Suasana Ruang Baca 1" loading="lazy">
-              <div class="galeri-overlay">
-                <p class="galeri-caption"><i class="fas fa-search-plus me-2"></i>Ruang Lesehan & Diskusi</p>
-              </div>
+            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/12-AY_4CvTpN9PIISM6qUELGxrZKtHemU')">
+              <img src="https://lh3.googleusercontent.com/d/12-AY_4CvTpN9PIISM6qUELGxrZKtHemU" class="galeri-img" alt="Suasana Perpustakaan 1" loading="lazy">
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
-            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/1KkF4xDy6-kocrPY6crXqMyM9jpZnnhuw', 'Area Koleksi Buku & Rak Referensi Utama')">
-              <img src="https://lh3.googleusercontent.com/d/1KkF4xDy6-kocrPY6crXqMyM9jpZnnhuw" class="galeri-img" alt="Suasana Ruang Baca 2" loading="lazy">
-              <div class="galeri-overlay">
-                <p class="galeri-caption"><i class="fas fa-search-plus me-2"></i>Koleksi & Rak Referensi</p>
-              </div>
+            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/1KkF4xDy6-kocrPY6crXqMyM9jpZnnhuw')">
+              <img src="https://lh3.googleusercontent.com/d/1KkF4xDy6-kocrPY6crXqMyM9jpZnnhuw" class="galeri-img" alt="Suasana Perpustakaan 2" loading="lazy">
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
-            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/15wPubxKfk7cGDVcbKH3_KAhVgHSnzV4-', 'Fasilitas Meja Belajar Individual Pemustaka')">
-              <img src="https://lh3.googleusercontent.com/d/15wPubxKfk7cGDVcbKH3_KAhVgHSnzV4-" class="galeri-img" alt="Suasana Ruang Baca 3" loading="lazy">
-              <div class="galeri-overlay">
-                <p class="galeri-caption"><i class="fas fa-search-plus me-2"></i>Meja Belajar Pemustaka</p>
-              </div>
+            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/15wPubxKfk7cGDVcbKH3_KAhVgHSnzV4-')">
+              <img src="https://lh3.googleusercontent.com/d/15wPubxKfk7cGDVcbKH3_KAhVgHSnzV4-" class="galeri-img" alt="Suasana Perpustakaan 3" loading="lazy">
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
-            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/1UPxNrEOkjIyRg6OaZyYDv7W3HqACB33q', 'Area Pelayanan & Meja Sirkulasi Perpustakaan')">
-              <img src="https://lh3.googleusercontent.com/d/1UPxNrEOkjIyRg6OaZyYDv7W3HqACB33q" class="galeri-img" alt="Suasana Ruang Baca 4" loading="lazy">
-              <div class="galeri-overlay">
-                <p class="galeri-caption"><i class="fas fa-search-plus me-2"></i>Meja Sirkulasi Utama</p>
-              </div>
+            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/1UPxNrEOkjIyRg6OaZyYDv7W3HqACB33q')">
+              <img src="https://lh3.googleusercontent.com/d/1UPxNrEOkjIyRg6OaZyYDv7W3HqACB33q" class="galeri-img" alt="Suasana Perpustakaan 4" loading="lazy">
             </div>
           </div>
         </div>
       </div>
 
-      <!-- LAYANAN KAMI (DESAIN BARU DENGAN IKON TERKUSTOMISASI) -->
+      <!-- LAYANAN KAMI -->
       <div id="layanan-section" class="pt-3 mb-5">
         <div class="text-center mb-4">
           <h3 class="text-navy fw-bold mb-1">Layanan Kami</h3>
@@ -843,7 +808,6 @@
           </div>
           <div class="modal-body text-center p-2">
             <img id="lightboxImage" src="" class="img-fluid rounded shadow-lg" alt="Zoom Foto Perpustakaan">
-            <p id="lightboxCaption" class="text-white mt-3 fw-semibold fs-5"></p>
           </div>
         </div>
       </div>
@@ -922,10 +886,9 @@
         });
       };
 
-      // LIGHTBOX MODAL
-      function openLightbox(src, caption) {
+      // LIGHTBOX MODAL POLOS
+      function openLightbox(src) {
         document.getElementById('lightboxImage').src = src;
-        document.getElementById('lightboxCaption').innerText = caption;
         var myModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
         myModal.show();
       }
