@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perpustakaan IBITEK - Pusat Informasi & Literasi Digital</title>
     
-    <!-- Favicon -->
+    <!-- Favicon ASLI -->
     <link rel="icon" href="https://lh3.googleusercontent.com/d/1tL2jxKvTRJ1W3pfYDnAE3oosBQ0tEOBJ" type="image/x-icon">
     
-    <!-- Deskripsi & Open Graph SEO -->
+    <!-- Deskripsi & Open Graph SEO ASLI -->
     <meta name="description" content="Layanan resmi Perpustakaan Institut Bisnis dan Teknologi (IBITEK). Layanan peminjaman, OPAC, E-Book, E-Journal, dan Repository.">
     <meta property="og:title" content="Perpustakaan IBITEK - Pusat Informasi & Literasi Digital">
     <meta property="og:description" content="Layanan peminjaman, koleksi digital, OPAC, E-Book, E-Journal, dan info perpustakaan IBITEK.">
@@ -30,30 +30,49 @@
         padding: 0;
         background-color: #f4f8fb;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden; /* Mencegah munculnya scrollbar horizontal */
       }
 
-      /* NAVBAR STICKY */
+      /* NAVBAR STICKY & NAV-LINK HOVER EFFECT */
       .navbar-custom {
         background-color: #ffffff;
         box-shadow: 0 2px 10px rgba(0,0,0,0.06);
       }
 
-      /* BANNER HEADER GRADASI SESUAI GAMBAR SAMPEL */
-      .banner-container {
-        padding: 20px 15px 0 15px;
+      .navbar-custom .nav-link {
+        position: relative;
+        transition: color 0.3s ease;
       }
-      
+
+      .navbar-custom .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 2px;
+        left: 50%;
+        background-color: #0d6efd;
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+      }
+
+      .navbar-custom .nav-link:hover::after {
+        width: 75%;
+      }
+
+      /* BANNER HEADER GRADASI FULL WIDTH (DIUBAH AGAR PENUH KIRI-KANAN) */
       .hero-section {
         background: linear-gradient(180deg, #020079 0%, #004baf 35%, #0084c7 65%, #18d8e8 100%);
         color: #ffffff;
         padding: 65px 25px;
-        border-radius: 24px;
+        border-radius: 0; /* Dibuat rapat ke tepi layar */
         position: relative;
         overflow: hidden;
+        width: 100%;
         box-shadow: 0 12px 30px rgba(0, 132, 199, 0.3);
       }
 
-      /* ANIMASI FLOATING MELAYANG UNTUK IKON DEKORATIF BANNER */
+      /* ANIMASI FLOATING MELAYANG UNTUK IKON DEKORATIF BANNER (ASLI) */
       @keyframes floatAnimation1 {
         0% { transform: translateY(0px) rotate(0deg); }
         50% { transform: translateY(-15px) rotate(5deg); }
@@ -73,13 +92,12 @@
         pointer-events: none;
       }
 
-      /* POSISI & ANIMASI IKON-IKON DEKORATIF BANNER */
+      /* POSISI & ANIMASI IKON-IKON DEKORATIF BANNER (ASLI) */
       .icon-book-1 { top: 12%; left: 4%; font-size: 3.8rem; animation: floatAnimation1 5s ease-in-out infinite; }
       .icon-book-2 { bottom: 12%; left: 5%; font-size: 3rem; animation: floatAnimation2 6s ease-in-out infinite 0.5s; }
       .icon-book-3 { top: 12%; right: 5%; font-size: 4rem; animation: floatAnimation1 5.5s ease-in-out infinite 1s; }
       .icon-book-4 { bottom: 12%; right: 5%; font-size: 3.2rem; animation: floatAnimation2 6.5s ease-in-out infinite 1.5s; }
       
-      /* IKON TAMBAHAN */
       .icon-book-5 { top: 48%; left: 18%; font-size: 2.5rem; animation: floatAnimation2 5.2s ease-in-out infinite 0.8s; }
       .icon-book-6 { top: 48%; right: 18%; font-size: 2.5rem; animation: floatAnimation1 5.8s ease-in-out infinite 1.2s; }
       .icon-book-7 { top: 15%; left: 35%; font-size: 2.2rem; animation: floatAnimation1 4.8s ease-in-out infinite 0.3s; }
@@ -113,15 +131,51 @@
         margin-top: 10px;
       }
 
+      /* HOVER CARDS EFEK INTERAKTIF DENGAN TRANSISI HALUS */
       .card-layanan, .card-akses, .card-jam, .card-info, .card-fasilitas, .card-vmt, .card-galeri {
         border: none;
-        border-radius: 14px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        transition: transform 0.2s, box-shadow 0.2s;
+        border-radius: 16px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
       }
       .card-layanan:hover, .card-akses:hover, .card-jam:hover, .card-info:hover, .card-fasilitas:hover, .card-vmt:hover, .card-galeri:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        transform: translateY(-8px);
+        box-shadow: 0 14px 28px rgba(13, 110, 253, 0.15);
+      }
+
+      /* HIGHLIGHT VISUAL UTAMA UNTUK AKSES PENTING */
+      .featured-card {
+        border: 2px solid #0d6efd !important;
+        position: relative;
+        background: linear-gradient(180deg, #ffffff 0%, #f0f7ff 100%);
+      }
+
+      .badge-populer {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        background: linear-gradient(45deg, #ffc107, #ff9800);
+        color: #000000;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+      }
+
+      /* GRADIENT CTA BUTTON EFEK INTERAKTIF HALUS */
+      .btn-gradient-primary {
+        background: linear-gradient(45deg, #0d6efd, #00d2ff);
+        color: #ffffff !important;
+        border: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+      }
+      .btn-gradient-primary:hover {
+        background: linear-gradient(45deg, #0b5ed7, #00b4db);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(13, 110, 253, 0.35);
       }
 
       .card-vmt {
@@ -153,18 +207,18 @@
         object-position: center;
         width: 100%;
         display: block;
-        border-radius: 14px;
-        transition: transform 0.3s ease;
+        border-radius: 16px;
+        transition: transform 0.4s ease;
       }
 
       .card-galeri {
-        border-radius: 14px;
+        border-radius: 16px;
         overflow: hidden;
         background-color: #fff;
       }
 
       .card-galeri:hover .galeri-img {
-        transform: scale(1.05);
+        transform: scale(1.08);
       }
 
       .jam-item {
@@ -197,9 +251,9 @@
         border-radius: 30px;
         padding: 10px 20px;
         text-decoration: none;
-        transition: opacity 0.2s;
+        transition: transform 0.2s, opacity 0.2s;
       }
-      .btn-social:hover { opacity: 0.9; }
+      .btn-social:hover { opacity: 0.9; transform: translateY(-2px); }
       .btn-wa { background-color: #25D366; }
       .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
       .btn-fb { background-color: #1877F2; }
@@ -255,7 +309,7 @@
   </head>
   <body>
 
-    <!-- NAVIGASI KEPALA (NAVBAR STICKY) -->
+    <!-- NAVIGASI KEPALA (NAVBAR STICKY ASLI) -->
     <nav class="navbar navbar-expand-lg navbar-light navbar-custom sticky-top">
       <div class="container">
         <a class="navbar-brand fw-bold text-primary d-flex align-items-center" href="#">
@@ -280,11 +334,11 @@
       </div>
     </nav>
 
-    <!-- BANNER WARNA GRADASI DENGAN IKON ANIMASI FLOATING -->
-    <div class="container banner-container mb-5">
+    <!-- BANNER WARNA GRADASI FULL WIDTH (DIUBAH AGAR PENUH TANPA CONTAINER TERPOTONG) -->
+    <div class="container-fluid px-0 mb-5">
       <div class="hero-section text-center">
         
-        <!-- Ikon-Ikon Dekoratif Bergerak Melayang (Floating) -->
+        <!-- Ikon-Ikon Dekoratif Bergerak Melayang (Floating Asli) -->
         <i class="fas fa-book-open bg-icon icon-book-1"></i>
         <i class="fas fa-laptop-code bg-icon icon-book-2"></i>
         <i class="fas fa-globe bg-icon icon-book-3"></i>
@@ -307,7 +361,7 @@
 
     <div class="container mb-5">
 
-      <!-- SECTION VISI, MISI & TUJUAN PERPUSTAKAAN IBITEK -->
+      <!-- SECTION VISI, MISI & TUJUAN PERPUSTAKAAN IBITEK (ASLI) -->
       <div id="visi-misi" class="pt-3 mb-5">
         <h3 class="text-center mb-4 text-primary fw-bold">Visi, Misi & Tujuan Perpustakaan IBITEK</h3>
         
@@ -349,31 +403,36 @@
         </div>
       </div>
 
-      <!-- Section Akses Katalog & Koleksi Digital -->
+      <!-- Section Akses Katalog & Koleksi Digital (Dengan Highlight & Gradasi Tombol) -->
       <h3 id="akses-digital" class="text-center mb-4 text-primary fw-semibold pt-3">Akses Katalog & Koleksi Digital</h3>
       <div class="row g-4 mb-5">
+        
+        <!-- Card Buku Tamu (Featured Badge) -->
         <div class="col-md-6 col-lg-4">
-          <div class="card h-100 card-akses p-3 text-center border-primary">
+          <div class="card h-100 card-akses featured-card p-3 text-center">
+            <span class="badge-populer">Wajib Isi</span>
             <div class="card-body d-flex flex-column justify-content-between">
               <div>
                 <i class="fas fa-user-check fa-3x text-primary mb-3"></i>
                 <h5 class="card-title fw-bold">Buku Tamu Perpustakaan</h5>
                 <p class="card-text text-secondary small">Isi kehadiran pengunjung dan pemustaka perpustakaan secara digital.</p>
               </div>
-              <a href="https://siakad.stiei-kayutangi-bjm.ac.id/digilib" target="_blank" class="btn btn-primary rounded-pill mt-3">Isi Buku Tamu</a>
+              <a href="https://siakad.stiei-kayutangi-bjm.ac.id/digilib" target="_blank" class="btn btn-gradient-primary rounded-pill mt-3">Isi Buku Tamu <i class="fas fa-arrow-right ms-1"></i></a>
             </div>
           </div>
         </div>
 
+        <!-- OPAC (Featured Badge) -->
         <div class="col-md-6 col-lg-4">
-          <div class="card h-100 card-akses p-3 text-center">
+          <div class="card h-100 card-akses featured-card p-3 text-center">
+            <span class="badge-populer">Katalog Utama</span>
             <div class="card-body d-flex flex-column justify-content-between">
               <div>
                 <i class="fas fa-search-location fa-3x text-primary mb-3"></i>
                 <h5 class="card-title fw-bold">OPAC Penelusuran Buku</h5>
                 <p class="card-text text-secondary small">Cari lokasi dan ketersediaan koleksi buku fisik di perpustakaan secara online.</p>
               </div>
-              <a href="https://perpus.ibitek.ac.id/index.php" target="_blank" class="btn btn-outline-primary rounded-pill mt-3">Akses OPAC</a>
+              <a href="https://perpus.ibitek.ac.id/index.php" target="_blank" class="btn btn-gradient-primary rounded-pill mt-3">Akses OPAC <i class="fas fa-arrow-right ms-1"></i></a>
             </div>
           </div>
         </div>
@@ -418,7 +477,7 @@
         </div>
       </div>
 
-      <!-- Section Jam Layanan Operasional -->
+      <!-- Section Jam Layanan Operasional (ASLI) -->
       <h3 id="jam-operasional" class="text-center mb-4 text-primary fw-semibold pt-3">Jam Layanan Operasional</h3>
       <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
@@ -467,7 +526,7 @@
         </div>
       </div>
 
-      <!-- Section Tata Tertib -->
+      <!-- Section Tata Tertib (ASLI) -->
       <h3 id="tata-tertib" class="text-center mb-4 text-primary fw-semibold pt-3">Keanggotaan & Tata Tertib Perpustakaan</h3>
       <div class="row g-4 mb-5">
         <div class="col-md-6 col-lg-4">
@@ -521,7 +580,7 @@
         </div>
       </div>
 
-      <!-- Section Fasilitas -->
+      <!-- Section Fasilitas (ASLI) -->
       <h3 id="fasilitas" class="text-center mb-4 text-primary fw-semibold pt-3">Fasilitas Perpustakaan</h3>
       <div class="row g-4 mb-5 text-center">
         <div class="col-6 col-md-3">
@@ -550,7 +609,7 @@
         </div>
       </div>
 
-      <!-- GALERI SUASANA PERPUSTAKAAN -->
+      <!-- GALERI SUASANA PERPUSTAKAAN (MENGGUNAKAN GAMBAR ASLI SAMA PERSIS) -->
       <h3 id="galeri" class="text-center mb-4 text-primary fw-semibold pt-3">Galeri Suasana Perpustakaan</h3>
       <div class="row g-4 mb-5">
         <div class="col-md-6 col-lg-3">
@@ -575,11 +634,11 @@
         </div>
       </div>
 
-      <!-- Layanan Perpustakaan (6 Layanan) -->
+      <!-- Layanan Perpustakaan (6 Layanan - ASLI) -->
       <h3 class="text-center mb-4 text-primary fw-semibold">Layanan Kami</h3>
       <div class="row g-4 mb-5" id="daftar-layanan"></div>
 
-      <!-- Section FAQ -->
+      <!-- Section FAQ (ASLI) -->
       <h3 id="faq-section" class="text-center mb-4 text-primary fw-semibold pt-3">Pertanyaan Sering Diajukan (FAQ)</h3>
       <div class="row justify-content-center mb-5">
         <div class="col-lg-10">
@@ -624,7 +683,7 @@
         </div>
       </div>
 
-      <!-- Kontak & Medsos -->
+      <!-- Kontak & Medsos (ASLI) -->
       <div id="kontak-lokasi" class="contact-section my-5 pt-3">
         <div class="row g-4">
           <div class="col-lg-5 text-center text-lg-start d-flex flex-column justify-content-center">
@@ -681,17 +740,17 @@
       </div>
     </div>
 
-    <!-- Tombol Back to Top -->
+    <!-- Tombol Back to Top (ASLI) -->
     <button type="button" class="btn btn-primary btn-back-to-top" id="btnBackToTop" title="Kembali ke atas">
       <i class="fas fa-arrow-up"></i>
     </button>
 
-    <!-- Footer -->
+    <!-- Footer (ASLI) -->
     <footer class="text-center py-4 bg-white border-top">
       <div class="mb-2">
-        <a href="https://ibitek.ac.id/" target="_blank" class="text-decoration-none text-primary fw-semibold me-3">🌐 Web Resmi IBITEK</a>
+        <a href="https://ibitek.ac.id/" target="_blank" class="text-decoration-none text-primary fw-semibold me-3"> Web Resmi IBITEK</a>
         <span class="text-muted me-3">|</span>
-        <a href="https://siakad.stiei-kayutangi-bjm.ac.id/" target="_blank" class="text-decoration-none text-primary fw-semibold">🎓 Portal SIAKAD</a>
+        <a href="https://siakad.stiei-kayutangi-bjm.ac.id/" target="_blank" class="text-decoration-none text-primary fw-semibold"> Portal SIAKAD</a>
       </div>
       <p class="text-muted mb-0">&copy; 2026 Perpustakaan IBITEK. All Rights Reserved.</p>
     </footer>
@@ -700,7 +759,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      // DATA 6 LAYANAN PERPUSTAKAAN
+      // DATA 6 LAYANAN PERPUSTAKAAN (ASLI)
       const dataLayanan = [
         { judul: "Sirkulasi & Peminjaman", deskripsi: "Layanan peminjaman, pengembalian, dan perpanjangan masa pinjam koleksi buku fisik perpustakaan." },
         { judul: "Layanan Bebas Pustaka", deskripsi: "Pengurusan surat keterangan bebas pinjam perpustakaan sebagai syarat yudisium dan wisuda." },
