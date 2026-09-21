@@ -383,6 +383,7 @@
             <li class="nav-item"><a class="nav-link" href="#fasilitas">Fasilitas</a></li>
             <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
             <li class="nav-item"><a class="nav-link" href="#layanan-section">Layanan</a></li>
+            <li class="nav-item"><a class="nav-link" href="#ulasan-section">Ulasan</a></li>
             <li class="nav-item"><a class="nav-link" href="#faq-section">FAQ</a></li>
             <li class="nav-item"><a class="nav-link" href="#kontak-lokasi">Kontak</a></li>
           </ul>
@@ -730,6 +731,23 @@
         </div>
       </div>
 
+      <!-- SECTION ULASAN MAHASISWA -->
+      <div id="ulasan-section" class="pt-3 mb-5">
+        <div class="text-center mb-4">
+          <h3 class="text-navy fw-bold mb-1">Ulasan Mahasiswa</h3>
+          <p class="text-slate-muted">Pendapat dan masukan dari mahasiswa mengenai Perpustakaan IBITEK</p>
+          <button type="button" class="btn btn-primary rounded-pill mt-2" onclick="toggleReviewModal()">
+            <i class="fas fa-comment-dots me-2"></i>Tulis Ulasan
+          </button>
+        </div>
+        
+        <div class="card p-4 shadow-sm border-0">
+          <div id="review-list" style="max-height: 350px; overflow-y: auto; padding-right: 8px;">
+            <p class="text-muted text-center py-3">Memuat ulasan...</p>
+          </div>
+        </div>
+      </div>
+
       <!-- FAQ SECTION -->
       <h3 id="faq-section" class="text-center mb-4 text-navy fw-bold pt-3">Pertanyaan Sering Diajukan (FAQ)</h3>
       <div class="row justify-content-center mb-5">
@@ -832,7 +850,7 @@
       </div>
     </div>
 
-    <!-- MODAL LIGHTBOX -->
+    <!-- MODAL LIGHTBOX FOTO -->
     <div class="modal fade" id="lightboxModal" tabindex="-1" aria-labelledby="lightboxModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content bg-transparent border-0">
@@ -842,6 +860,36 @@
           <div class="modal-body text-center p-2">
             <img id="lightboxImage" src="" class="img-fluid rounded shadow-lg" alt="Zoom Foto Perpustakaan">
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL FORM TULIS ULASAN -->
+    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
+          <div class="modal-header border-0 bg-primary text-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
+            <h5 class="modal-title fw-bold" id="reviewModalLabel"><i class="fas fa-comment-dots me-2"></i>Tulis Ulasan Anda</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form id="reviewForm" onsubmit="submitReview(event)">
+            <div class="modal-body p-4">
+              <div class="mb-3">
+                <label for="reviewName" class="form-label fw-semibold text-navy">Nama Lengkap</label>
+                <input type="text" class="form-control rounded-3" id="reviewName" placeholder="Masukkan nama Anda" required>
+              </div>
+              <div class="mb-3">
+                <label for="reviewText" class="form-label fw-semibold text-navy">Ulasan / Masukan</label>
+                <textarea class="form-control rounded-3" id="reviewText" rows="4" placeholder="Tulis pengalaman atau masukan Anda..." required></textarea>
+              </div>
+            </div>
+            <div class="modal-footer border-0 pt-0">
+              <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Batal</button>
+              <button type="submit" class="btn btn-primary rounded-pill px-4" id="btnSubmitReview">
+                Kirim Ulasan
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -865,6 +913,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+      let reviewModalObj;
+
       const iconMap = [
         "fa-book-reader",
         "fa-chair",
@@ -875,10 +925,12 @@
       ];
 
       window.onload = function() {
+        reviewModalObj = new bootstrap.Modal(document.getElementById('reviewModal'));
         muatLayananDariBackend();
+        loadUlasan();
       };
 
-      // PROSES MENGAMBIL DATA DARI BACKEND Code.gs
+      // PROSES MENGAMBIL DATA LAYANAN
       function muatLayananDariBackend() {
         if (typeof google !== 'undefined' && google.script && google.script.run) {
           google.script.run
@@ -895,7 +947,13 @@
 
       function renderLayanan(data) {
         var container = document.getElementById('daftar-layanan');
+        if (!container) return;
         container.innerHTML = ''; 
+
+        if (!data || data.length === 0) {
+          renderLayananFallback();
+          return;
+        }
 
         data.forEach(function(item, index) {
           var iconClass = iconMap[index % iconMap.length];
@@ -923,6 +981,90 @@
           { judul: "Fasilitas Komputer & Internet (Wi-Fi)", deskripsi: "Akses komputer katalog (OPAC) dan koneksi Wi-Fi gratis untuk seluruh pengunjung." }
         ];
         renderLayanan(defaultData);
+      }
+
+      // ULASAN MAHASISWA - MENGAMBIL & MENAMPILKAN DATA DARI GOOGLE SHEETS
+      function loadUlasan() {
+        if (typeof google !== 'undefined' && google.script && google.script.run) {
+          google.script.run
+            .withSuccessHandler(renderUlasan)
+            .withFailureHandler(function(err) {
+              console.error("Gagal muat ulasan:", err);
+              renderUlasan([]);
+            })
+            .getUlasan();
+        } else {
+          renderUlasan([]);
+        }
+      }
+
+      function renderUlasan(data) {
+        const reviewList = document.getElementById('review-list');
+        if (!reviewList) return;
+        reviewList.innerHTML = ''; 
+
+        if (!data || data.length === 0) {
+          reviewList.innerHTML = '<p class="text-muted text-center py-3">Belum ada ulasan.</p>';
+          return;
+        }
+
+        // Tampilkan ulasan dari Google Sheets (paling baru berada di atas)
+        data.reverse().forEach(item => {
+          const html = `
+            <div class="p-3 mb-2 rounded" style="background: #f1f5f9;">
+              <strong>${item.nama}:</strong>
+              <p class="mb-0 text-slate-muted">${item.teks}</p>
+            </div>
+          `;
+          reviewList.insertAdjacentHTML('beforeend', html);
+        });
+      }
+
+      // KONTROL MODAL & SUBMIT ULASAN
+      function toggleReviewModal() {
+        if (reviewModalObj) {
+          reviewModalObj.toggle();
+        } else {
+          reviewModalObj = new bootstrap.Modal(document.getElementById('reviewModal'));
+          reviewModalObj.show();
+        }
+      }
+
+      function submitReview(event) {
+        event.preventDefault();
+        
+        const nama = document.getElementById('reviewName').value.trim();
+        const teks = document.getElementById('reviewText').value.trim();
+        const btnSubmit = document.getElementById('btnSubmitReview');
+
+        if (!nama || !teks) {
+          alert("Nama dan ulasan wajib diisi!");
+          return;
+        }
+
+        btnSubmit.disabled = true;
+        btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Mengirim...';
+
+        if (typeof google !== 'undefined' && google.script && google.script.run) {
+          google.script.run
+            .withSuccessHandler(function() {
+              btnSubmit.disabled = false;
+              btnSubmit.innerHTML = 'Kirim Ulasan';
+              document.getElementById('reviewForm').reset();
+              toggleReviewModal();
+              loadUlasan();
+            })
+            .withFailureHandler(function(err) {
+              alert("Gagal menyimpan ulasan. Silakan coba lagi.");
+              btnSubmit.disabled = false;
+              btnSubmit.innerHTML = 'Kirim Ulasan';
+            })
+            .simpanUlasan(nama, teks);
+        } else {
+          alert("Lingkungan Apps Script tidak terdeteksi.");
+          btnSubmit.disabled = false;
+          btnSubmit.innerHTML = 'Kirim Ulasan';
+        }
       }
 
       function openLightbox(src) {
