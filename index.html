@@ -1,1094 +1,256 @@
 <!DOCTYPE html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perpustakaan IBITEK - Pusat Informasi & Literasi Digital</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perpustakaan IBITEK - Pusat Informasi & Literasi Digital</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
+
+  <!-- Header & Navigation -->
+  <header class="bg-blue-900 text-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <i class="fa-solid fa-book-bookmark text-2xl text-yellow-400"></i>
+        <h1 class="text-xl font-bold tracking-wide">PERPUSTAKAAN IBITEK</h1>
+      </div>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="#berita" class="hover:text-yellow-400 transition">Berita</a>
+        <a href="#galeri" class="hover:text-yellow-400 transition">Galeri</a>
+        <a href="#layanan" class="hover:text-yellow-400 transition">Layanan</a>
+        <a href="#ulasan" class="hover:text-yellow-400 transition">Ulasan</a>
+        <a href="#faq" class="hover:text-yellow-400 transition">FAQ</a>
+        <a href="#kontak" class="hover:text-yellow-400 transition">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white py-16 px-4">
+    <div class="max-w-7xl mx-auto text-center space-y-4">
+      <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight">Selamat Datang di Perpustakaan IBITEK</h2>
+      <p class="text-blue-200 max-w-2xl mx-auto text-sm md:text-base">
+        Pusat sumber belajar, referensi ilmiah, dan literasi digital untuk mendukung kegiatan akademik serta penelitian seluruh civitas akademika IBITEK.
+      </p>
+      <div class="pt-4 flex justify-center gap-4">
+        <a href="#layanan" class="bg-yellow-400 text-blue-950 font-semibold px-5 py-2.5 rounded-lg hover:bg-yellow-300 transition shadow-md">Jelajahi Layanan</a>
+        <a href="#ulasan" class="bg-blue-700/60 text-white border border-blue-400 font-semibold px-5 py-2.5 rounded-lg hover:bg-blue-700 transition">Lihat Ulasan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content Container -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-12 space-y-16">
     
-    <!-- Favicon -->
-    <link rel="icon" href="https://lh3.googleusercontent.com/d/1tL2jxKvTRJ1W3pfYDnAE3oosBQ0tEOBJ" type="image/x-icon">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Layanan resmi Perpustakaan Institut Bisnis dan Teknologi (IBITEK). Layanan peminjaman, OPAC, E-Book, E-Journal, dan Repository.">
-    <meta property="og:title" content="Perpustakaan IBITEK - Pusat Informasi & Literasi Digital">
-    <meta property="og:description" content="Layanan peminjaman, koleksi digital, OPAC, E-Book, E-Journal, dan info perpustakaan IBITEK.">
-    <meta property="og:image" content="https://lh3.googleusercontent.com/d/1tL2jxKvTRJ1W3pfYDnAE3oosBQ0tEOBJ">
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Ikon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
+    <!-- Stats Section -->
+    <section class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <i class="fa-solid fa-books text-3xl text-blue-600 mb-2"></i>
+        <div class="text-2xl font-bold text-gray-900">15.000+</div>
+        <div class="text-xs text-gray-500">Koleksi Buku</div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <i class="fa-solid fa-file-pdf text-3xl text-blue-600 mb-2"></i>
+        <div class="text-2xl font-bold text-gray-900">5.000+</div>
+        <div class="text-xs text-gray-500">E-Journal & E-Book</div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <i class="fa-solid fa-users text-3xl text-blue-600 mb-2"></i>
+        <div class="text-2xl font-bold text-gray-900">2.500+</div>
+        <div class="text-xs text-gray-500">Anggota Aktif</div>
+      </div>
+      <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+        <i class="fa-solid fa-clock text-3xl text-blue-600 mb-2"></i>
+        <div class="text-2xl font-bold text-gray-900">08:00 - 16:00</div>
+        <div class="text-xs text-gray-500">Jam Operasional</div>
+      </div>
+    </section>
 
-      body {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        background-color: #f8fafc;
-        color: #0f172a;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        overflow-x: hidden;
-      }
+    <!-- Layanan Section -->
+    <section id="layanan">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        <i class="fa-solid fa-list-check text-blue-700"></i> Layanan Perpustakaan
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i>
+          </div>
+          <h3 class="font-bold text-lg text-blue-900 mb-2">Sirkulasi & Peminjaman Buku</h3>
+          <p class="text-gray-600 text-sm">Layanan peminjaman, pengembalian, dan perpanjangan koleksi buku perpustakaan secara mudah.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-chair"></i>
+          </div>
+          <h3 class="font-bold text-lg text-blue-900 mb-2">Ruang Baca & Area Diskusi</h3>
+          <p class="text-gray-600 text-sm">Fasilitas tempat belajar yang nyaman, dilengkapi meja baca mandiri dan ruang diskusi kelompok.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-laptop-code"></i>
+          </div>
+          <h3 class="font-bold text-lg text-blue-900 mb-2">Akses E-Journal & E-Book</h3>
+          <p class="text-gray-600 text-sm">Akses gratis jurnal ilmiah online dan buku digital untuk mendukung riset serta tugas akhir.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-user-graduate"></i>
+          </div>
+          <h3 class="font-bold text-lg text-blue-900 mb-2">Layanan Referensi & Bimbingan</h3>
+          <p class="text-gray-600 text-sm">Bantuan penelusuran pustaka, konsultasi penulisan ilmiah, dan bimbingan literasi informasi.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition">
+          <div class="w-10 h-10 bg-blue-100 text-blue-700 rounded-lg flex items-center justify-center font-bold mb-4">
+            <i class="fa-solid fa-wifi"></i>
+          </div>
+          <h3 class="font-bold text-lg text-blue-900 mb-2">Fasilitas Komputer & Wi-Fi</h3>
+          <p class="text-gray-600 text-sm">Akses komputer OPAC (Katalog Online) serta koneksi internet cepat Wi-Fi gratis untuk pengunjung.</p>
+        </div>
+      </div>
+    </section>
 
-      /* NAVIGASI GLASSMORPHISM */
-      .navbar-custom {
-        background-color: rgba(255, 255, 255, 0.75) !important;
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-        box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
-        transition: all 0.3s ease;
-      }
-
-      .navbar-custom .nav-link {
-        position: relative;
-        color: #334155 !important;
-        font-weight: 600;
-        transition: color 0.3s ease;
-      }
-
-      .navbar-custom .nav-link:hover {
-        color: #0284c7 !important;
-      }
-
-      .navbar-custom .nav-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 2px;
-        left: 50%;
-        background-color: #0284c7;
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-      }
-
-      .navbar-custom .nav-link:hover::after {
-        width: 75%;
-      }
-
-      @media (max-width: 991.98px) {
-        .navbar-custom .navbar-collapse {
-          background-color: rgba(255, 255, 255, 0.95);
-          backdrop-filter: blur(16px);
-          -webkit-backdrop-filter: blur(16px);
-          padding: 15px;
-          border-radius: 12px;
-          margin-top: 10px;
-          box-shadow: 0 10px 25px rgba(15, 23, 42, 0.1);
-        }
-      }
-
-      /* BANNER HEADER GRADASI FULL WIDTH */
-      .hero-section {
-        background: linear-gradient(180deg, #020079 0%, #004baf 35%, #0084c7 65%, #18d8e8 100%);
-        color: #ffffff;
-        padding: 65px 25px;
-        border-radius: 0;
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        box-shadow: 0 10px 25px -5px rgba(2, 132, 199, 0.25);
-      }
-
-      @keyframes floatAnimation1 {
-        0% { transform: translateY(0px) rotate(0deg); }
-        50% { transform: translateY(-15px) rotate(5deg); }
-        100% { transform: translateY(0px) rotate(0deg); }
-      }
-
-      @keyframes floatAnimation2 {
-        0% { transform: translateY(0px) rotate(0deg); }
-        50% { transform: translateY(15px) rotate(-6deg); }
-        100% { transform: translateY(0px) rotate(0deg); }
-      }
-
-      .bg-icon {
-        position: absolute;
-        color: rgba(255, 255, 255, 0.18);
-        z-index: 2;
-        pointer-events: none;
-      }
-
-      .icon-book-1 { top: 12%; left: 4%; font-size: 3.8rem; animation: floatAnimation1 5s ease-in-out infinite; }
-      .icon-book-2 { bottom: 12%; left: 5%; font-size: 3rem; animation: floatAnimation2 6s ease-in-out infinite 0.5s; }
-      .icon-book-3 { top: 12%; right: 5%; font-size: 4rem; animation: floatAnimation1 5.5s ease-in-out infinite 1s; }
-      .icon-book-4 { bottom: 12%; right: 5%; font-size: 3.2rem; animation: floatAnimation2 6.5s ease-in-out infinite 1.5s; }
-      .icon-book-5 { top: 48%; left: 18%; font-size: 2.5rem; animation: floatAnimation2 5.2s ease-in-out infinite 0.8s; }
-      .icon-book-6 { top: 48%; right: 18%; font-size: 2.5rem; animation: floatAnimation1 5.8s ease-in-out infinite 1.2s; }
-      .icon-book-7 { top: 15%; left: 35%; font-size: 2.2rem; animation: floatAnimation1 4.8s ease-in-out infinite 0.3s; }
-      .icon-book-8 { top: 15%; right: 35%; font-size: 2.2rem; animation: floatAnimation2 6.2s ease-in-out infinite 1.7s; }
-
-      .banner-content {
-        position: relative;
-        z-index: 3;
-      }
-
-      .logo-img {
-        max-width: 160px;
-        height: auto;
-        border-radius: 50%;
-        background-color: white;
-        padding: 8px;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-      }
-
-      .hero-title {
-        color: #ffffff;
-        font-weight: 800;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      }
-
-      .sub-title-text {
-        font-size: 1.35rem;
-        font-weight: 600;
-        color: #ffffff;
-        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-        margin-top: 10px;
-      }
-
-      /* KARTU DAN SHADOW */
-      .card-akses, .card-jam, .card-info, .card-fasilitas, .card-vmt {
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        background-color: #ffffff;
-        box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.04), 0 2px 4px -2px rgba(15, 23, 42, 0.03);
-        transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
-      }
-
-      .card-akses:hover, .card-jam:hover, .card-info:hover, .card-fasilitas:hover, .card-vmt:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-      }
-
-      .text-navy { color: #0f172a !important; }
-      .text-slate-muted { color: #475569 !important; }
-
-      .featured-card {
-        border: 2px solid #0284c7 !important;
-        position: relative;
-        background: linear-gradient(180deg, #ffffff 0%, #f0f9ff 100%);
-      }
-
-      .badge-populer {
-        position: absolute;
-        top: 14px;
-        right: 14px;
-        background: linear-gradient(45deg, #f59e0b, #d97706);
-        color: #ffffff;
-        font-size: 0.75rem;
-        font-weight: 700;
-        padding: 4px 12px;
-        border-radius: 20px;
-        box-shadow: 0 2px 4px rgba(15, 23, 42, 0.1);
-      }
-
-      .btn-gradient-primary {
-        background: linear-gradient(45deg, #0284c7, #0369a1);
-        color: #ffffff !important;
-        border: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.3);
-      }
-
-      .btn-gradient-primary:hover {
-        background: linear-gradient(45deg, #0369a1, #075985);
-        transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.4);
-      }
-
-      .card-vmt { font-size: 1.1rem !important; }
-      .card-vmt blockquote { font-size: 1.25rem !important; font-weight: 600 !important; color: #0f172a !important; line-height: 1.6; }
-      .card-vmt ol li { font-weight: 500 !important; color: #334155 !important; line-height: 1.6; }
-      .card-vmt ol li strong { font-weight: 700 !important; color: #0f172a !important; }
-
-      /* GALERI POLOS */
-      .galeri-wrapper {
-        position: relative;
-        border-radius: 16px;
-        overflow: hidden;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(15, 23, 42, 0.08);
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      }
-
-      .galeri-wrapper:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 15px 30px rgba(2, 132, 199, 0.2);
-      }
-
-      .galeri-img {
-        height: 240px;
-        object-fit: cover;
-        width: 100%;
-        display: block;
-        transition: transform 0.5s ease;
-        aspect-ratio: 4/3;
-      }
-
-      .galeri-wrapper:hover .galeri-img {
-        transform: scale(1.05);
-      }
-
-      /* LAYANAN KAMI */
-      .card-layanan-modern {
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        background: #ffffff;
-        padding: 24px;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-        height: 100%;
-        box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.04);
-      }
-
-      .card-layanan-modern::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 100%;
-        background: linear-gradient(180deg, #0284c7, #020079);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      .card-layanan-modern:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 15px 30px rgba(15, 23, 42, 0.08);
-        border-color: #cbd5e1;
-      }
-
-      .card-layanan-modern:hover::before {
-        opacity: 1;
-      }
-
-      .icon-box-layanan {
-        width: 52px;
-        height: 52px;
-        border-radius: 12px;
-        background-color: #f0f9ff;
-        color: #0284c7;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-        margin-bottom: 16px;
-        transition: all 0.3s ease;
-      }
-
-      .card-layanan-modern:hover .icon-box-layanan {
-        background-color: #0284c7;
-        color: #ffffff;
-      }
-
-      .jam-item {
-        background-color: #f1f5f9;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 14px 24px;
-        margin-bottom: 12px;
-        font-size: 1.15rem;
-        transition: background-color 0.2s;
-      }
-
-      .jam-item:hover { background-color: #e2e8f0; }
-      .badge-jam { font-size: 1.05rem; padding: 8px 18px; border-radius: 30px; }
-
-      .contact-section {
-        background-color: #ffffff;
-        border: 1px solid #e2e8f0;
-        border-radius: 16px;
-        padding: 30px;
-        box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.04);
-      }
-
-      .btn-social {
-        color: white !important;
-        font-weight: 500;
-        border-radius: 30px;
-        padding: 10px 20px;
-        text-decoration: none;
-        transition: transform 0.2s, opacity 0.2s;
-      }
-
-      .btn-social:hover { opacity: 0.9; transform: translateY(-2px); }
-      .btn-wa { background-color: #25D366; }
-      .btn-ig { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-      .btn-fb { background-color: #1877F2; }
-      .btn-yt { background-color: #FF0000; }
-      .btn-maps { background-color: #ea4335; }
-      .btn-email { background-color: #64748b; }
-      .btn-web { background-color: #0284c7; }
-      .btn-siakad { background-color: #4f46e5; }
-
-      .map-responsive {
-        overflow: hidden;
-        padding-bottom: 55%;
-        position: relative;
-        height: 0;
-        border-radius: 12px;
-      }
-
-      .map-responsive iframe {
-        left: 0; top: 0; height: 100%; width: 100%; position: absolute; border: 0;
-      }
-
-      .btn-back-to-top {
-        position: fixed;
-        bottom: 25px;
-        right: 25px;
-        display: none;
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        z-index: 999;
-        background-color: #0284c7;
-        border: none;
-        box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.2);
-      }
-
-      /* KARTU ULASAN */
-      .review-box {
-        max-height: 400px;
-        overflow-y: auto;
-      }
-      .review-card {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 16px;
-        margin-bottom: 12px;
-      }
-
-      @media (max-width: 576px) {
-        .logo-img { max-width: 120px !important; }
-      }
-
-      @media (max-width: 768px) {
-        .map-responsive { padding-bottom: 80%; }
-        .sub-title-text { font-size: 1.15rem; }
-        .bg-icon { opacity: 0.12; }
-        .icon-book-5, .icon-book-6, .icon-book-7, .icon-book-8 { display: none; }
-      }
-    </style>
-  </head>
-  <body>
-
-    <!-- NAVIGASI GLASSMORPHISM -->
-    <nav class="navbar navbar-expand-lg navbar-light navbar-custom sticky-top">
-      <div class="container">
-        <a class="navbar-brand fw-bold text-navy d-flex align-items-center" href="#">
-          <img src="https://lh3.googleusercontent.com/d/1tL2jxKvTRJ1W3pfYDnAE3oosBQ0tEOBJ" alt="Logo IBITEK" width="35" height="35" class="d-inline-block align-text-top me-2 rounded-circle" onerror="this.src='https://via.placeholder.com/35'">
-          PERPUSTAKAAN IBITEK
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
+    <!-- Ulasan Section -->
+    <section id="ulasan" class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 flex items-center gap-2">
+            <i class="fa-solid fa-comments text-blue-700"></i> Ulasan Pemustaka
+          </h2>
+          <p class="text-sm text-gray-500">Pendapat dan saran dari civitas akademika IBITEK</p>
+        </div>
+        <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold flex items-center gap-2 transition shadow">
+          <i class="fa-solid fa-pen"></i> Tulis Ulasan
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto fw-semibold">
-            <li class="nav-item"><a class="nav-link" href="#visi-misi">Visi & Misi</a></li>
-            <li class="nav-item"><a class="nav-link" href="#akses-digital">Akses Digital</a></li>
-            <li class="nav-item"><a class="nav-link" href="#jam-operasional">Jam Buka</a></li>
-            <li class="nav-item"><a class="nav-link" href="#tata-tertib">Tata Tertib</a></li>
-            <li class="nav-item"><a class="nav-link" href="#fasilitas">Fasilitas</a></li>
-            <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
-            <li class="nav-item"><a class="nav-link" href="#layanan-section">Layanan</a></li>
-            <li class="nav-item"><a class="nav-link" href="#ulasan-section">Ulasan</a></li>
-            <li class="nav-item"><a class="nav-link" href="#faq-section">FAQ</a></li>
-            <li class="nav-item"><a class="nav-link" href="#kontak-lokasi">Kontak</a></li>
-          </ul>
+      </div>
+
+      <div id="ulasanContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p class="text-gray-500 italic text-sm">Ulasan tersimpan langsung di Google Sheets.</p>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        <i class="fa-solid fa-circle-question text-blue-700"></i> Pertanyaan Umum (FAQ)
+      </h2>
+      <div class="space-y-4">
+        <details class="bg-white p-4 rounded-xl border border-gray-200">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Bagaimana cara perpanjangan peminjaman buku?</summary>
+          <p class="text-sm text-gray-600 mt-2">Perpanjangan peminjaman dapat dilakukan langsung di meja sirkulasi sebelum tanggal jatuh tempo tiba.</p>
+        </details>
+        <details class="bg-white p-4 rounded-xl border border-gray-200">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Bagaimana syarat mendapatkan Surat Bebas Pustaka?</summary>
+          <p class="text-sm text-gray-600 mt-2">Mahasiswa harus mengembalikan seluruh pinjaman buku dan menyelesaikan kewajiban administrasi di perpustakaan.</p>
+        </details>
+        <details class="bg-white p-4 rounded-xl border border-gray-200">
+          <summary class="font-semibold text-gray-800 cursor-pointer">Apakah non-mahasiswa IBITEK boleh berkunjung?</summary>
+          <p class="text-sm text-gray-600 mt-2">Boleh, dengan mendaftar di pos pengunjung dan menunjukkan kartu identitas resmi yang berlaku.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Kontak & Lokasi Section -->
+    <section id="kontak">
+      <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-2">
+        <i class="fa-solid fa-location-dot text-blue-700"></i> Lokasi Kampus IBITEK
+      </h2>
+      <div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col md:flex-row gap-6">
+        <div class="flex-1 space-y-3">
+          <h3 class="font-bold text-lg text-gray-900">Hubungi & Ikuti Kami</h3>
+          <p class="text-sm text-gray-600"><i class="fa-solid fa-map-pin text-blue-600 w-5"></i> Jl. Flamboyan, Banjarmasin, Kalimantan Selatan</p>
+          <p class="text-sm text-gray-600"><i class="fa-solid fa-envelope text-blue-600 w-5"></i> perpustakaan@ibitek.ac.id</p>
+          <p class="text-sm text-gray-600"><i class="fa-solid fa-phone text-blue-600 w-5"></i> (0511) 1234567</p>
         </div>
       </div>
-    </nav>
+    </section>
 
-    <!-- BANNER HEADER GRADASI FULL WIDTH -->
-    <div class="container-fluid px-0 mb-5">
-      <div class="hero-section text-center">
-        <i class="fas fa-book-open bg-icon icon-book-1"></i>
-        <i class="fas fa-laptop-code bg-icon icon-book-2"></i>
-        <i class="fas fa-globe bg-icon icon-book-3"></i>
-        <i class="fas fa-graduation-cap bg-icon icon-book-4"></i>
-        <i class="fas fa-certificate bg-icon icon-book-5"></i>
-        <i class="fas fa-trophy bg-icon icon-book-6"></i>
-        <i class="fas fa-search bg-icon icon-book-7"></i>
-        <i class="fas fa-wifi bg-icon icon-book-8"></i>
+  </main>
 
-        <div class="banner-content">
-          <img src="https://lh3.googleusercontent.com/d/1tL2jxKvTRJ1W3pfYDnAE3oosBQ0tEOBJ" alt="Logo Perpustakaan IBITEK" class="logo-img mb-3" onerror="this.src='https://via.placeholder.com/160'">
-          <h1 class="hero-title display-5 mb-1">Selamat Datang di Perpustakaan IBITEK</h1>
-          <div class="sub-title-text">
-            Institut Bisnis dan Teknologi Kalimantan
-          </div>
-        </div>
+  <!-- Modal Form Ulasan -->
+  <div id="ulasanModal" class="fixed inset-0 bg-black/50 hidden flex items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-xl max-w-md w-full p-6 shadow-xl relative">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
+          <i class="fa-solid fa-comment-dots text-blue-600"></i> Tulis Ulasan Anda
+        </h3>
+        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+          <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
       </div>
+
+      <form id="formUlasan" onsubmit="submitUlasan(event)" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Nama Lengkap</label>
+          <input type="text" id="namaInput" required class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm" placeholder="Contoh: Elisa">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Ulasan / Masukan</label>
+          <textarea id="ulasanInput" rows="4" required class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm" placeholder="Tulis masukan Anda..."></textarea>
+        </div>
+        <div class="flex justify-end gap-2 pt-2">
+          <button type="button" onclick="closeModal()" class="px-4 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-lg">Batal</button>
+          <button type="submit" id="btnSubmit" class="px-4 py-2 text-sm bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow transition flex items-center gap-2">
+            <i class="fa-solid fa-paper-plane"></i> Kirim
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <div class="container mb-5">
+  <!-- Footer -->
+  <footer class="bg-blue-950 text-white text-center py-6 text-xs">
+    <p>&copy; Perpustakaan IBITEK - Pusat Informasi & Literasi Digital. All rights reserved.</p>
+  </footer>
 
-      <!-- VISI, MISI & TUJUAN -->
-      <div id="visi-misi" class="pt-3 mb-5">
-        <h3 class="text-center mb-4 text-navy fw-bold">Visi, Misi & Tujuan Perpustakaan IBITEK</h3>
-        
-        <div class="card card-vmt p-4 mb-4 text-center border-start border-primary border-4">
-          <div class="card-body">
-            <h4 class="fw-bold text-navy mb-3"><i class="fas fa-eye me-2 text-primary"></i>Visi Perpustakaan IBITEK</h4>
-            <blockquote class="blockquote italic mb-0">
-              "Menjadi pusat informasi dan literasi unggulan di Kalimantan yang mendukung pendidikan, penelitian, dan pengabdian kepada masyarakat, serta pengembangan ilmu di bidang akuntansi, manajemen, dan teknologi informasi."
-            </blockquote>
-          </div>
-        </div>
+  <script>
+    // URL Web App Google Apps Script Anda
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz6Qhm5gmEiEBJraLSL0f-GYTbCXzt6NY2oWvkjwgsxDSnMUqIutu1PwIuMv5PN5rMAlA/exec";
 
-        <div class="row g-4">
-          <div class="col-lg-6">
-            <div class="card card-vmt h-100 p-4">
-              <h4 class="fw-bold text-navy mb-3"><i class="fas fa-bullseye me-2 text-primary"></i>Misi Perpustakaan IBITEK</h4>
-              <ol class="mb-0 ps-3">
-                <li class="mb-3"><strong>Menyediakan sumber informasi berkualitas</strong> yang relevan dengan kebutuhan akademik dan penelitian di bidang akuntansi, manajemen, dan teknologi informasi.</li>
-                <li class="mb-3"><strong>Mengembangkan layanan literasi informasi dan digital</strong> untuk meningkatkan kemampuan civitas akademika dalam mengakses, mengevaluasi, dan menggunakan informasi secara efektif.</li>
-                <li class="mb-3"><strong>Mendorong budaya membaca, meneliti, dan berpikir kritis</strong> di lingkungan kampus melalui program-program literasi dan penyediaan fasilitas belajar yang nyaman dan modern.</li>
-                <li class="mb-3"><strong>Memanfaatkan teknologi informasi</strong> untuk meningkatkan efisiensi layanan perpustakaan serta akses terhadap koleksi digital dan sumber daya elektronik.</li>
-                <li class="mb-0"><strong>Menjalin kerja sama</strong> dengan perpustakaan, institusi pendidikan, dan penyedia informasi lainnya di tingkat regional maupun nasional untuk memperluas jangkauan dan kualitas layanan.</li>
-              </ol>
-            </div>
-          </div>
+    function openModal() {
+      document.getElementById('ulasanModal').classList.remove('hidden');
+    }
 
-          <div class="col-lg-6">
-            <div class="card card-vmt h-100 p-4">
-              <h4 class="fw-bold text-navy mb-3"><i class="fas fa-tasks me-2 text-primary"></i>Tujuan Perpustakaan IBITEK</h4>
-              <ol class="mb-0 ps-3">
-                <li class="mb-3">Mendukung proses pembelajaran dan pengajaran di semua program studi melalui penyediaan koleksi referensi yang relevan dan mutakhir.</li>
-                <li class="mb-3">Menyediakan akses yang luas dan mudah terhadap sumber informasi, baik dalam bentuk cetak maupun digital.</li>
-                <li class="mb-3">Meningkatkan literasi informasi civitas akademika untuk menunjang kegiatan ilmiah dan penelitian.</li>
-                <li class="mb-3">Mewujudkan sistem layanan perpustakaan yang responsif, inklusif, dan berbasis teknologi.</li>
-                <li class="mb-0">Menjadi mitra strategis dalam pencapaian visi dan misi institusi secara keseluruhan.</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </div>
+    function closeModal() {
+      document.getElementById('ulasanModal').classList.add('hidden');
+    }
 
-      <!-- AKSES KATALOG, KOLEKSI DIGITAL & FORM LAYANAN -->
-      <h3 id="akses-digital" class="text-center mb-4 text-navy fw-bold pt-3">Akses Katalog & Layanan Digital</h3>
-      <div class="row g-4 mb-5">
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 card-akses featured-card p-3 text-center">
-            <span class="badge-populer">Wajib Isi</span>
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div>
-                <i class="fas fa-user-check fa-3x text-primary mb-3"></i>
-                <h5 class="card-title fw-bold text-navy">Buku Tamu Perpustakaan</h5>
-                <p class="card-text text-slate-muted small">Isi kehadiran pengunjung dan pemustaka perpustakaan secara digital.</p>
-              </div>
-              <a href="https://siakad.stiei-kayutangi-bjm.ac.id/digilib/guestbook" target="_blank" class="btn btn-gradient-primary rounded-pill mt-3">Isi Buku Tamu <i class="fas fa-arrow-right ms-1"></i></a>
-            </div>
-          </div>
-        </div>
+    function submitUlasan(e) {
+      e.preventDefault();
+      const nama = document.getElementById('namaInput').value;
+      const ulasan = document.getElementById('ulasanInput').value;
+      const btnSubmit = document.getElementById('btnSubmit');
 
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 card-akses featured-card p-3 text-center">
-            <span class="badge-populer">Katalog Utama</span>
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div>
-                <i class="fas fa-search-location fa-3x text-primary mb-3"></i>
-                <h5 class="card-title fw-bold text-navy">OPAC Penelusuran Buku</h5>
-                <p class="card-text text-slate-muted small">Cari lokasi dan ketersediaan koleksi buku fisik di perpustakaan secara online.</p>
-              </div>
-              <a href="https://perpus.ibitek.ac.id/index.php" target="_blank" class="btn btn-gradient-primary rounded-pill mt-3">Akses OPAC <i class="fas fa-arrow-right ms-1"></i></a>
-            </div>
-          </div>
-        </div>
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...`;
 
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 card-akses p-3 text-center">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div>
-                <i class="fas fa-archive fa-3x text-primary mb-3"></i>
-                <h5 class="card-title fw-bold text-navy">Repository Institusi</h5>
-                <p class="card-text text-slate-muted small">Kumpulan karya ilmiah, skripsi, dan riset sivitas akademika IBITEK.</p>
-              </div>
-              <a href="http://eprints.stiei-kayutangi-bjm.ac.id/" target="_blank" class="btn btn-outline-primary rounded-pill mt-3">Akses Repository</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-6">
-          <div class="card h-100 card-akses p-3 text-center">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div>
-                <i class="fas fa-book-reader fa-3x text-primary mb-3"></i>
-                <h5 class="card-title fw-bold text-navy">Aplikasi E-Book</h5>
-                <p class="card-text text-slate-muted small">Unduh aplikasi perpustakaan digital resmi di Google Play Store (Kubuku).</p>
-              </div>
-              <a href="https://play.google.com/store/apps/details?id=id.kubuku.kbk6535aa3" target="_blank" class="btn btn-outline-primary rounded-pill mt-3">Download E-Book</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-6">
-          <div class="card h-100 card-akses p-3 text-center">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div>
-                <i class="fas fa-journal-whills fa-3x text-primary mb-3"></i>
-                <h5 class="card-title fw-bold text-navy">E-Journal IBITEK</h5>
-                <p class="card-text text-slate-muted small">Akses publikasi jurnal ilmiah berkala yang diterbitkan oleh IBITEK.</p>
-              </div>
-              <a href="https://e-jurnal.ibitek.ac.id/" target="_blank" class="btn btn-outline-primary rounded-pill mt-3">Akses E-Journal</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- USULAN BUKU BARU -->
-        <div class="col-md-6 col-lg-6">
-          <div class="card h-100 card-akses p-3 text-center">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div>
-                <i class="fas fa-book-medical fa-3x text-primary mb-3"></i>
-                <h5 class="card-title fw-bold text-navy">Usulan Buku Baru</h5>
-                <p class="card-text text-slate-muted small">Usulkan judul buku atau referensi ilmiah baru yang Anda butuhkan untuk koleksi perpustakaan.</p>
-              </div>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSesL7usZvWcVLhUr7uQNC1i3-ajklzO-oISTs8Iy_m2orQaCg/viewform?usp=header" target="_blank" class="btn btn-outline-primary rounded-pill mt-3">Isi Usulan Buku</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- SURVEI KEPUASAN PEMUSTAKA -->
-        <div class="col-md-6 col-lg-6">
-          <div class="card h-100 card-akses p-3 text-center">
-            <div class="card-body d-flex flex-column justify-content-between">
-              <div>
-                <i class="fas fa-poll-h fa-3x text-primary mb-3"></i>
-                <h5 class="card-title fw-bold text-navy">Survei Kepuasan Pemustaka</h5>
-                <p class="card-text text-slate-muted small">Bantu kami meningkatkan kualitas layanan perpustakaan dengan memberikan penilaian Anda.</p>
-              </div>
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSe6qHswi1L791bOKhb2lZJfH48LoMw8N2824eqA1EdoUajvwA/viewform?usp=header" target="_blank" class="btn btn-outline-primary rounded-pill mt-3">Isi Survei Kepuasan</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- JAM OPERASIONAL -->
-      <h3 id="jam-operasional" class="text-center mb-4 text-navy fw-bold pt-3">Jam Layanan Operasional</h3>
-      <div class="row justify-content-center mb-5">
-        <div class="col-lg-10">
-          <div class="card card-jam p-4">
-            <div class="d-flex align-items-center mb-4 pb-2 border-bottom">
-              <i class="fas fa-clock fa-2x text-primary me-3"></i>
-              <h4 class="fw-bold m-0 text-navy">Jadwal Buka Perpustakaan</h4>
-            </div>
-
-            <div class="jam-item d-flex justify-content-between align-items-center">
-              <span class="fw-semibold text-navy"><i class="far fa-calendar-alt me-3 text-primary"></i>Senin</span>
-              <span class="badge bg-primary badge-jam">08.00 - 16.00 WITA</span>
-            </div>
-
-            <div class="jam-item d-flex justify-content-between align-items-center">
-              <span class="fw-semibold text-navy"><i class="far fa-calendar-alt me-3 text-primary"></i>Selasa</span>
-              <span class="badge bg-primary badge-jam">08.00 - 16.00 WITA</span>
-            </div>
-
-            <div class="jam-item d-flex justify-content-between align-items-center">
-              <span class="fw-semibold text-navy"><i class="far fa-calendar-alt me-3 text-primary"></i>Rabu</span>
-              <span class="badge bg-primary badge-jam">08.00 - 15.00 WITA</span>
-            </div>
-
-            <div class="jam-item d-flex justify-content-between align-items-center">
-              <span class="fw-semibold text-navy"><i class="far fa-calendar-alt me-3 text-primary"></i>Kamis</span>
-              <span class="badge bg-primary badge-jam">08.00 - 15.00 WITA</span>
-            </div>
-
-            <div class="jam-item d-flex justify-content-between align-items-center">
-              <span class="fw-semibold text-navy"><i class="far fa-calendar-alt me-3 text-primary"></i>Jumat</span>
-              <span class="badge bg-warning text-dark badge-jam">08.00 - 11.00 WITA</span>
-            </div>
-
-            <div class="jam-item d-flex justify-content-between align-items-center">
-              <span class="fw-semibold text-navy"><i class="far fa-calendar-alt me-3 text-primary"></i>Sabtu</span>
-              <span class="badge bg-primary badge-jam">08.00 - 15.00 WITA</span>
-            </div>
-
-            <div class="jam-item d-flex justify-content-between align-items-center">
-              <span class="fw-semibold text-slate-muted"><i class="far fa-times-circle me-3 text-danger"></i>Minggu & Hari Libur Nasional</span>
-              <span class="badge bg-danger badge-jam">Tutup</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TATA TERTIB -->
-      <h3 id="tata-tertib" class="text-center mb-4 text-navy fw-bold pt-3">Keanggotaan & Tata Tertib Perpustakaan</h3>
-      <div class="row g-4 mb-5">
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 card-info p-4 d-flex flex-column justify-content-between">
-            <div>
-              <div class="d-flex align-items-center mb-3">
-                <i class="fas fa-id-card fa-2x text-primary me-3"></i>
-                <h4 class="fw-bold m-0 text-navy">Syarat Keanggotaan</h4>
-              </div>
-              <ul class="list-group list-group-flush mb-3">
-                <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-check-circle text-success me-2"></i>Membawa Kartu Tanda Mahasiswa (KTM) aktif.</li>
-                <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-check-circle text-success me-2"></i>Mengisi formulir pendaftaran anggota secara online.</li>
-                <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-check-circle text-success me-2"></i>Status keanggotaan berlaku bagi seluruh civitas akademika IBITEK.</li>
-              </ul>
-            </div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeOenzcAemif3pVDhodeTo0zDJlJyILdtNxM3W0oiJF2LbrCA/viewform" target="_blank" class="btn btn-primary w-100 rounded-pill">
-              <i class="fas fa-file-alt me-2"></i>Daftar Anggota Online
-            </a>
-          </div>
-        </div>
-
-        <div class="col-md-6 col-lg-4">
-          <div class="card h-100 card-info p-4">
-            <div class="d-flex align-items-center mb-3">
-              <i class="fas fa-clipboard-list fa-2x text-primary me-3"></i>
-              <h4 class="fw-bold m-0 text-navy">Ketentuan Pinjam & Sanksi</h4>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-book me-2 text-primary"></i><strong>Maksimal Pinjam:</strong> 2 eksemplar buku per anggota.</li>
-              <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-history me-2 text-primary"></i><strong>Masa Pinjam:</strong> 1 minggu (7 hari).</li>
-              <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-coins me-2 text-warning"></i><strong>Denda Keterlambatan:</strong> Rp 1.000,- / hari per buku.</li>
-              <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-exclamation-triangle me-2 text-danger"></i><strong>Buku Hilang:</strong> Wajib mengganti dengan judul buku yang sama.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="col-md-12 col-lg-4">
-          <div class="card h-100 card-info p-4 border-danger">
-            <div class="d-flex align-items-center mb-3">
-              <i class="fas fa-ban fa-2x text-danger me-3"></i>
-              <h4 class="fw-bold m-0 text-navy">Larangan Pengunjung</h4>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-bed text-danger me-2"></i>Dilarang rebahan / tidur di dalam area perpustakaan.</li>
-              <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-utensils text-danger me-2"></i>Dilarang makan, minum, dan merokok di dalam ruangan.</li>
-              <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-volume-up text-danger me-2"></i>Dilarang membuat kegaduhan / suara bising yang mengganggu pengunjung lain.</li>
-              <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-edit text-danger me-2"></i>Dilarang merusak, mencoret, atau memotong halaman buku.</li>
-              <li class="list-group-item bg-transparent ps-0 border-0"><i class="fas fa-walking text-danger me-2"></i>Dilarang membawa keluar buku tanpa prosedur peminjaman resmi.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <!-- FASILITAS -->
-      <h3 id="fasilitas" class="text-center mb-4 text-navy fw-bold pt-3">Fasilitas Perpustakaan</h3>
-      <div class="row g-4 mb-5 text-center">
-        <div class="col-6 col-md-3">
-          <div class="card card-fasilitas p-3 h-100">
-            <i class="fas fa-snowflake fa-2x text-primary mb-2"></i>
-            <h6 class="fw-bold m-0 text-navy">Ruangan Ber-AC</h6>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="card card-fasilitas p-3 h-100">
-            <i class="fas fa-wifi fa-2x text-primary mb-2"></i>
-            <h6 class="fw-bold m-0 text-navy">Free Wi-Fi Kampus</h6>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="card card-fasilitas p-3 h-100">
-            <i class="fas fa-plug fa-2x text-primary mb-2"></i>
-            <h6 class="fw-bold m-0 text-navy">Charging Station</h6>
-          </div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="card card-fasilitas p-3 h-100">
-            <i class="fas fa-desktop fa-2x text-primary mb-2"></i>
-            <h6 class="fw-bold m-0 text-navy">PC Komputer OPAC</h6>
-          </div>
-        </div>
-      </div>
-
-      <!-- GALERI SUASANA PERPUSTAKAAN -->
-      <div id="galeri" class="pt-3 mb-5">
-        <div class="text-center mb-4">
-          <h3 class="text-navy fw-bold mb-1">Galeri Suasana Perpustakaan</h3>
-          <p class="text-slate-muted">Dokumentasi kenyamanan dan aktivitas di Perpustakaan IBITEK</p>
-        </div>
-        <div class="row g-4">
-          <div class="col-md-6 col-lg-3">
-            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/12-AY_4CvTpN9PIISM6qUELGxrZKtHemU')">
-              <img src="https://lh3.googleusercontent.com/d/12-AY_4CvTpN9PIISM6qUELGxrZKtHemU" class="galeri-img" alt="Suasana Perpustakaan 1" loading="lazy">
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/1KkF4xDy6-kocrPY6crXqMyM9jpZnnhuw')">
-              <img src="https://lh3.googleusercontent.com/d/1KkF4xDy6-kocrPY6crXqMyM9jpZnnhuw" class="galeri-img" alt="Suasana Perpustakaan 2" loading="lazy">
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/15wPubxKfk7cGDVcbKH3_KAhVgHSnzV4-')">
-              <img src="https://lh3.googleusercontent.com/d/15wPubxKfk7cGDVcbKH3_KAhVgHSnzV4-" class="galeri-img" alt="Suasana Perpustakaan 3" loading="lazy">
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="galeri-wrapper" onclick="openLightbox('https://lh3.googleusercontent.com/d/1UPxNrEOkjIyRg6OaZyYDv7W3HqACB33q')">
-              <img src="https://lh3.googleusercontent.com/d/1UPxNrEOkjIyRg6OaZyYDv7W3HqACB33q" class="galeri-img" alt="Suasana Perpustakaan 4" loading="lazy">
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- LAYANAN KAMI -->
-      <div id="layanan-section" class="pt-3 mb-5">
-        <div class="text-center mb-4">
-          <h3 class="text-navy fw-bold mb-1">Layanan Kami</h3>
-          <p class="text-slate-muted">Berbagai fasilitas layanan pustaka untuk mendukung kebutuhan akademik Anda</p>
-        </div>
-        <div class="row g-4" id="daftar-layanan">
-          <div class="col-12 text-center text-muted py-4">
-            <div class="spinner-border text-primary me-2" role="status"></div>
-            Memuat layanan...
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION ULASAN MAHASISWA -->
-      <div id="ulasan-section" class="pt-3 mb-5">
-        <div class="card p-4 border-0 shadow-sm rounded-4 bg-white">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <div>
-              <h3 class="text-navy fw-bold m-0"><i class="fas fa-comments text-primary me-2"></i>Ulasan Pemustaka</h3>
-              <p class="text-slate-muted small m-0">Pendapat dan saran dari civitas akademika IBITEK</p>
-            </div>
-            <button class="btn btn-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalUlasan">
-              <i class="fas fa-pen me-2"></i>Tulis Ulasan
-            </button>
-          </div>
-          <div class="review-box" id="review-list">
-            <div class="text-center text-muted py-3">
-              <div class="spinner-border spinner-border-sm text-primary me-1"></div> Memuat ulasan...
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- FAQ SECTION -->
-      <h3 id="faq-section" class="text-center mb-4 text-navy fw-bold pt-3">Pertanyaan Sering Diajukan (FAQ)</h3>
-      <div class="row justify-content-center mb-5">
-        <div class="col-lg-10">
-          <div class="accordion" id="accordionFAQ">
-            <div class="accordion-item border-0 mb-2 rounded shadow-sm">
-              <h2 class="accordion-header" id="headingOne">
-                <button class="accordion-button fw-bold text-navy" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                  Bagaimana cara melakukan perpanjangan buku?
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFAQ">
-                <div class="accordion-body text-slate-muted">
-                  Perpanjangan peminjaman hanya dapat dilakukan secara langsung offline di meja sirkulasi perpustakaan sebelum jatuh tempo.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item border-0 mb-2 rounded shadow-sm">
-              <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed fw-bold text-navy" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                  Bagaimana syarat mendapatkan Surat Bebas Pustaka?
-                </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-                <div class="accordion-body text-slate-muted">
-                  Mahasiswa harus memastikan tidak memiliki tunggakan pinjaman buku maupun denda, serta telah menyerahkan skripsi yang sudah berjilid ke perpustakaan.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item border-0 rounded shadow-sm">
-              <h2 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed fw-bold text-navy" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                  Apakah non-mahasiswa IBITEK boleh berkunjung?
-                </button>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-                <div class="accordion-body text-slate-muted">
-                  Pengunjung luar / umum diperbolehkan membaca koleksi buku di tempat setelah mengisi Buku Tamu di meja pelayanan perpustakaan.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- KONTAK & MEDSOS -->
-      <div id="kontak-lokasi" class="contact-section my-5 pt-3">
-        <div class="row g-4">
-          <div class="col-lg-5 text-center text-lg-start d-flex flex-column justify-content-center">
-            <h3 class="text-navy fw-bold mb-3">Hubungi & Ikuti Kami</h3>
-            
-            <p class="text-slate-muted mb-2 small">
-              <i class="fas fa-map-marker-alt text-danger me-2"></i><strong>Alamat:</strong> Jl. Brigjend H. Hasan Basry No. 9-11, Pangeran, Kec. Banjarmasin Utara, Kota Banjarmasin, Kalimantan Selatan 70124
-            </p>
-            
-            <p class="text-slate-muted mb-4 small">
-              <i class="fas fa-envelope text-primary me-2"></i><strong>Email Resmi:</strong> perpuststiei@gmail.com
-            </p>
-
-            <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-2">
-              <a href="https://wa.me/6281250989716" target="_blank" class="btn btn-social btn-wa mb-2">
-                <i class="fab fa-whatsapp me-2"></i> WhatsApp
-              </a>
-              <a href="mailto:perpuststiei@gmail.com" class="btn btn-social btn-email mb-2">
-                <i class="fas fa-envelope me-2"></i> Email
-              </a>
-              <a href="https://www.instagram.com/perpust_ibitek?igsh=eW1tbWVvdnV3a2Iw" target="_blank" class="btn btn-social btn-ig mb-2">
-                <i class="fab fa-instagram me-2"></i> Instagram
-              </a>
-              <a href="https://www.facebook.com/perpustakaan.stie.75" target="_blank" class="btn btn-social btn-fb mb-2">
-                <i class="fab fa-facebook-f me-2"></i> Facebook
-              </a>
-              <a href="https://www.youtube.com/channel/UC5GfvekD6_Al_gIeifQMYLQ" target="_blank" class="btn btn-social btn-yt mb-2">
-                <i class="fab fa-youtube me-2"></i> YouTube
-              </a>
-              <a href="https://maps.app.goo.gl/DG57f7UJqf7NKU6K8" target="_blank" class="btn btn-social btn-maps mb-2">
-                <i class="fas fa-map-marked-alt me-2"></i> Google Maps
-              </a>
-              <a href="https://ibitek.ac.id/" target="_blank" class="btn btn-social btn-web mb-2">
-                <i class="fas fa-globe me-2"></i> Web IBITEK
-              </a>
-              <a href="https://siakad.stiei-kayutangi-bjm.ac.id/" target="_blank" class="btn btn-social btn-siakad mb-2">
-                <i class="fas fa-graduation-cap me-2"></i> Portal SIAKAD
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-7">
-            <h4 class="text-navy fw-bold mb-3"><i class="fas fa-map-marker-alt me-2 text-primary"></i>Lokasi Kampus IBITEK</h4>
-            <div class="map-responsive border">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.2185565181163!2d114.59363077497184!3d-3.295980096678887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de42375ef00a9eb%3A0xb20b22a0df8a8461!2sSTIE%20Indonesia%20Banjarmasin!50e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-            <div class="text-end mt-2">
-              <a href="https://maps.app.goo.gl/DG57f7UJqf7NKU6K8" target="_blank" class="small text-primary fw-bold text-decoration-none">
-                Buka di Aplikasi Google Maps <i class="fas fa-external-link-alt ms-1"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL FORM ULASAN -->
-    <div class="modal fade" id="modalUlasan" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0 shadow-lg rounded-4">
-          <div class="modal-header bg-primary text-white border-0">
-            <h5 class="modal-header-title fw-bold m-0"><i class="fas fa-comment-dots me-2"></i>Tulis Ulasan Anda</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body p-4">
-            <form id="formUlasan" onsubmit="event.preventDefault(); submitUlasan();">
-              <div class="mb-3">
-                <label for="inputNama" class="form-label fw-semibold">Nama Lengkap</label>
-                <input type="text" class="form-control" id="inputNama" placeholder="Masukkan nama Anda" required>
-              </div>
-              <div class="mb-3">
-                <label for="inputTeks" class="form-label fw-semibold">Ulasan / Masukan</label>
-                <textarea class="form-control" id="inputTeks" rows="4" placeholder="Tuliskan ulasan atau saran Anda..." required></textarea>
-              </div>
-              <div class="d-flex justify-content-end gap-2">
-                <button type="button" class="btn btn-light rounded-pill" data-bs-dismiss="modal">Batal</button>
-                <button type="submit" id="btnKirimUlasan" class="btn btn-primary rounded-pill px-4">
-                  <span id="btnText"><i class="fas fa-paper-plane me-2"></i>Kirim</span>
-                  <span id="btnSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status"></span>
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL LIGHTBOX -->
-    <div class="modal fade" id="lightboxModal" tabindex="-1" aria-labelledby="lightboxModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-transparent border-0">
-          <div class="modal-header border-0 pb-0 justify-content-end">
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body text-center p-2">
-            <img id="lightboxImage" src="" class="img-fluid rounded shadow-lg" alt="Zoom Foto Perpustakaan">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Tombol Back to Top -->
-    <button type="button" class="btn btn-primary btn-back-to-top" id="btnBackToTop" title="Kembali ke atas">
-      <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Footer -->
-    <footer class="text-center py-4 bg-white border-top">
-      <div class="mb-2">
-        <a href="https://ibitek.ac.id/" target="_blank" class="text-decoration-none text-primary fw-semibold me-3"> Web Resmi IBITEK</a>
-        <span class="text-slate-muted me-3">|</span>
-        <a href="https://siakad.stiei-kayutangi-bjm.ac.id/" target="_blank" class="text-decoration-none text-primary fw-semibold"> Portal SIAKAD</a>
-      </div>
-      <p class="text-slate-muted mb-0">&copy; 2026 Perpustakaan IBITEK. All Rights Reserved.</p>
-    </footer>
-
-    <!-- JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-      const iconMap = [
-        "fa-book-reader",
-        "fa-chair",
-        "fa-laptop-code",
-        "fa-user-graduate",
-        "fa-wifi",
-        "fa-search-location"
-      ];
-
-      window.onload = function() {
-        muatLayananDariBackend();
-        muatUlasanDariBackend();
-      };
-
-      // 1. Dapatkan Data Layanan
-      function muatLayananDariBackend() {
-        if (typeof google !== 'undefined' && google.script && google.script.run) {
-          google.script.run
-            .withSuccessHandler(renderLayanan)
-            .withFailureHandler(function(err) {
-              console.error(err);
-              renderLayananFallback();
-            })
-            .getLayananPerpustakaan();
-        } else {
-          renderLayananFallback();
-        }
-      }
-
-      function renderLayanan(data) {
-        var container = document.getElementById('daftar-layanan');
-        container.innerHTML = ''; 
-
-        data.forEach(function(item, index) {
-          var iconClass = iconMap[index % iconMap.length];
-          var htmlCard = `
-            <div class="col-md-6 col-lg-4">
-              <div class="card-layanan-modern">
-                <div class="icon-box-layanan">
-                  <i class="fas ${iconClass}"></i>
-                </div>
-                <h5 class="fw-bold text-navy mb-2">${item.judul}</h5>
-                <p class="text-slate-muted small mb-0">${item.deskripsi}</p>
-              </div>
-            </div>
-          `;
-          container.innerHTML += htmlCard;
-        });
-      }
-
-      function renderLayananFallback() {
-        const defaultData = [
-          { judul: "Sirkulasi & Peminjaman Buku", deskripsi: "Layanan peminjaman, pengembalian, dan perpanjangan koleksi buku perpustakaan." },
-          { judul: "Ruang Baca & Area Diskusi", deskripsi: "Fasilitas tempat belajar yang nyaman, dilengkapi dengan meja baca mandiri dan ruang diskusi kelompok." },
-          { judul: "Akses E-Journal & E-Book", deskripsi: "Layanan akses jurnal ilmiah online dan buku digital untuk mendukung riset dan pembelajaran." },
-          { judul: "Layanan Referensi & Bimbingan Pemustaka", deskripsi: "Bantuan penelusuran informasi, pencarian pustaka, dan pelatihan literasi informasi." },
-          { judul: "Fasilitas Komputer & Internet (Wi-Fi)", deskripsi: "Akses komputer katalog (OPAC) dan koneksi Wi-Fi gratis untuk seluruh pengunjung." }
-        ];
-        renderLayanan(defaultData);
-      }
-
-      // 2. Dapatkan Data Ulasan
-      function muatUlasanDariBackend() {
-        if (typeof google !== 'undefined' && google.script && google.script.run) {
-          google.script.run
-            .withSuccessHandler(renderUlasan)
-            .withFailureHandler(function(err) {
-              console.error(err);
-              document.getElementById('review-list').innerHTML = '<div class="text-center text-muted py-3">Belum ada ulasan.</div>';
-            })
-            .getUlasan();
-        } else {
-          document.getElementById('review-list').innerHTML = '<div class="text-center text-muted py-3">Fitur ulasan membutuhkan deployment Apps Script.</div>';
-        }
-      }
-
-      function renderUlasan(data) {
-        var container = document.getElementById('review-list');
-        if (!data || data.length === 0) {
-          container.innerHTML = '<div class="text-center text-muted py-3">Belum ada ulasan. Jadilah yang pertama memberikan ulasan!</div>';
-          return;
-        }
-
-        container.innerHTML = '';
-        data.forEach(function(item) {
-          var html = `
-            <div class="review-card">
-              <div class="fw-bold text-navy"><i class="fas fa-user-circle me-2 text-primary"></i>${item.nama}</div>
-              <div class="text-slate-muted small mt-1">${item.teks}</div>
-            </div>
-          `;
-          container.innerHTML += html;
-        });
-      }
-
-      // 3. Simpan Ulasan Baru
-      function submitUlasan() {
-        var nama = document.getElementById('inputNama').value;
-        var teks = document.getElementById('inputTeks').value;
-        var btnKirim = document.getElementById('btnKirimUlasan');
-        var btnSpinner = document.getElementById('btnSpinner');
-
-        if (!nama || !teks) {
-          alert('Mohon isi nama dan ulasan Anda.');
-          return;
-        }
-
-        btnKirim.disabled = true;
-        btnSpinner.classList.remove('d-none');
-
-        if (typeof google !== 'undefined' && google.script && google.script.run) {
-          google.script.run
-            .withSuccessHandler(function(res) {
-              btnKirim.disabled = false;
-              btnSpinner.classList.add('d-none');
-              alert('Terima kasih! Ulasan Anda berhasil disimpan.');
-              
-              document.getElementById('formUlasan').reset();
-              var modalEl = document.getElementById('modalUlasan');
-              var modal = bootstrap.Modal.getInstance(modalEl);
-              if (modal) modal.hide();
-
-              muatUlasanDariBackend();
-            })
-            .withFailureHandler(function(err) {
-              btnKirim.disabled = false;
-              btnSpinner.classList.add('d-none');
-              alert('Gagal menyimpan ulasan. Silakan coba lagi.');
-            })
-            .simpanUlasan(nama, teks);
-        } else {
-          btnKirim.disabled = false;
-          btnSpinner.classList.add('d-none');
-          alert('Pengiriman ulasan tidak dapat diproses (mode preview offline).');
-        }
-      }
-
-      function openLightbox(src) {
-        document.getElementById('lightboxImage').src = src;
-        var myModal = new bootstrap.Modal(document.getElementById('lightboxModal'));
-        myModal.show();
-      }
-
-      const btnBackToTop = document.getElementById("btnBackToTop");
-      window.onscroll = function () {
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-          btnBackToTop.style.display = "block";
-        } else {
-          btnBackToTop.style.display = "none";
-        }
-      };
-      btnBackToTop.addEventListener("click", function () {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          nama: nama,
+          teks: ulasan
+        })
+      })
+      .then(() => {
+        alert("Terima kasih! Ulasan Anda berhasil dikirim ke Google Sheets.");
+        document.getElementById('formUlasan').reset();
+        closeModal();
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Kirim`;
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Gagal mengirim ulasan.");
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Kirim`;
       });
-    </script>
-  </body>
+    }
+  </script>
+</body>
 </html>
