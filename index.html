@@ -742,7 +742,10 @@
           <p class="text-slate-muted">Berbagai fasilitas layanan pustaka untuk mendukung kebutuhan akademik Anda</p>
         </div>
         <div class="row g-4" id="daftar-layanan">
-          <!-- Item Layanan -->
+          <div class="col-12 text-center text-muted py-4">
+            <div class="spinner-border text-primary me-2" role="status"></div>
+            Memuat layanan...
+          </div>
         </div>
       </div>
 
@@ -932,8 +935,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      // MASUKKAN URL WEB APP GOOGLE APPS SCRIPT ANDA DI SINI
-      const SCRIPT_URL = 'URL_WEB_APP_DARI_GOOGLE_APPS_SCRIPT_ANDA';
+      // Web App URL dari Apps Script yang telah dideploy
+      const API_URL = "https://script.google.com/macros/s/AKfycbz6Qhm5gmEiEBJraLSL0f-GYTbCXzt6NY2oWvkjwgsxDSnMUqIutu1PwIuMv5PN5rMAlA/exec";
 
       const iconMap = [
         "fa-book-reader",
@@ -945,23 +948,26 @@
       ];
 
       window.onload = function() {
-        renderLayananFallback();
+        muatLayananDariBackend();
         muatUlasanDariBackend();
       };
 
-      function renderLayananFallback() {
-        const defaultData = [
-          { judul: "Sirkulasi & Peminjaman Buku", deskripsi: "Layanan peminjaman, pengembalian, dan perpanjangan koleksi buku perpustakaan." },
-          { judul: "Ruang Baca & Area Diskusi", deskripsi: "Fasilitas tempat belajar yang nyaman, dilengkapi dengan meja baca mandiri dan ruang diskusi kelompok." },
-          { judul: "Akses E-Journal & E-Book", deskripsi: "Layanan akses jurnal ilmiah online dan buku digital untuk mendukung riset dan pembelajaran." },
-          { judul: "Layanan Referensi & Bimbingan Pemustaka", deskripsi: "Bantuan penelusuran informasi, pencarian pustaka, dan pelatihan literasi informasi." },
-          { judul: "Fasilitas Komputer & Internet (Wi-Fi)", deskripsi: "Akses komputer katalog (OPAC) dan koneksi Wi-Fi gratis untuk seluruh pengunjung." }
-        ];
+      // 1. Dapatkan Data Layanan via HTTP Fetch
+      function muatLayananDariBackend() {
+        fetch(`${API_URL}?action=getLayanan`)
+          .then(response => response.json())
+          .then(data => renderLayanan(data))
+          .catch(err => {
+            console.error("Gagal memuat layanan:", err);
+            renderLayananFallback();
+          });
+      }
 
+      function renderLayanan(data) {
         var container = document.getElementById('daftar-layanan');
         container.innerHTML = ''; 
 
-        defaultData.forEach(function(item, index) {
+        data.forEach(function(item, index) {
           var iconClass = iconMap[index % iconMap.length];
           var htmlCard = `
             <div class="col-md-6 col-lg-4">
@@ -978,21 +984,25 @@
         });
       }
 
-      // 1. MENGAMBIL ULASAN DARI GOOGLE SHEETS VIA FETCH
-      function muatUlasanDariBackend() {
-        if (!SCRIPT_URL || SCRIPT_URL.includes('URL_WEB_APP_DARI_GOOGLE_APPS_SCRIPT_ANDA')) {
-          document.getElementById('review-list').innerHTML = '<div class="text-center text-muted py-3">Silakan pasang URL Web App Google Apps Script pada kode JavaScript.</div>';
-          return;
-        }
+      function renderLayananFallback() {
+        const defaultData = [
+          { judul: "Sirkulasi & Peminjaman Buku", deskripsi: "Layanan peminjaman, pengembalian, dan perpanjangan koleksi buku perpustakaan." },
+          { judul: "Ruang Baca & Area Diskusi", deskripsi: "Fasilitas tempat belajar yang nyaman, dilengkapi dengan meja baca mandiri dan ruang diskusi kelompok." },
+          { judul: "Akses E-Journal & E-Book", deskripsi: "Layanan akses jurnal ilmiah online dan buku digital untuk mendukung riset dan pembelajaran." },
+          { judul: "Layanan Referensi & Bimbingan Pemustaka", deskripsi: "Bantuan penelusuran informasi, pencarian pustaka, dan pelatihan literasi informasi." },
+          { judul: "Fasilitas Komputer & Internet (Wi-Fi)", deskripsi: "Akses komputer katalog (OPAC) dan koneksi Wi-Fi gratis untuk seluruh pengunjung." }
+        ];
+        renderLayanan(defaultData);
+      }
 
-        fetch(SCRIPT_URL)
-          .then(res => res.json())
-          .then(data => {
-            renderUlasan(data);
-          })
+      // 2. Dapatkan Data Ulasan via HTTP Fetch
+      function muatUlasanDariBackend() {
+        fetch(`${API_URL}?action=getUlasan`)
+          .then(response => response.json())
+          .then(data => renderUlasan(data))
           .catch(err => {
-            console.error(err);
-            document.getElementById('review-list').innerHTML = '<div class="text-center text-muted py-3">Gagal memuat ulasan.</div>';
+            console.error("Gagal memuat ulasan:", err);
+            document.getElementById('review-list').innerHTML = '<div class="text-center text-muted py-3">Gagal memuat ulasan. Silakan coba lagi nanti.</div>';
           });
       }
 
@@ -1004,8 +1014,7 @@
         }
 
         container.innerHTML = '';
-        // Urutkan ulasan terbaru di atas
-        data.reverse().forEach(function(item) {
+        data.forEach(function(item) {
           var html = `
             <div class="review-card">
               <div class="fw-bold text-navy"><i class="fas fa-user-circle me-2 text-primary"></i>${item.nama}</div>
@@ -1016,7 +1025,7 @@
         });
       }
 
-      // 2. MENGIRIM ULASAN BARU KE GOOGLE SHEETS VIA FETCH
+      // 3. Simpan Ulasan Baru via HTTP Fetch (POST)
       function submitUlasan() {
         var nama = document.getElementById('inputNama').value;
         var teks = document.getElementById('inputTeks').value;
@@ -1031,38 +1040,33 @@
         btnKirim.disabled = true;
         btnSpinner.classList.remove('d-none');
 
-        const formData = new URLSearchParams();
-        formData.append('nama', nama);
-        formData.append('teks', teks);
-
-        fetch(SCRIPT_URL, {
-          method: 'POST',
-          body: formData
+        fetch(API_URL, {
+          method: "POST",
+          body: JSON.stringify({ nama: nama, teks: teks })
         })
-        .then(res => res.json())
+        .then(response => response.json())
         .then(res => {
           btnKirim.disabled = false;
           btnSpinner.classList.add('d-none');
-          alert('Terima kasih! Ulasan Anda berhasil disimpan.');
-          
-          document.getElementById('formUlasan').reset();
-          var modalEl = document.getElementById('modalUlasan');
-          var modal = bootstrap.Modal.getInstance(modalEl);
-          if (modal) modal.hide();
 
-          muatUlasanDariBackend();
+          if (res.status === "success") {
+            alert('Terima kasih! Ulasan Anda berhasil disimpan.');
+            document.getElementById('formUlasan').reset();
+            
+            var modalEl = document.getElementById('modalUlasan');
+            var modal = bootstrap.Modal.getInstance(modalEl);
+            if (modal) modal.hide();
+
+            muatUlasanDariBackend();
+          } else {
+            alert('Gagal menyimpan ulasan: ' + res.message);
+          }
         })
         .catch(err => {
-          console.error(err);
           btnKirim.disabled = false;
           btnSpinner.classList.add('d-none');
-          alert('Ulasan Anda telah dikirim! Memperbarui data...');
-          document.getElementById('formUlasan').reset();
-          var modalEl = document.getElementById('modalUlasan');
-          var modal = bootstrap.Modal.getInstance(modalEl);
-          if (modal) modal.hide();
-          
-          setTimeout(muatUlasanDariBackend, 1000);
+          console.error("Error submit ulasan:", err);
+          alert('Gagal menyimpan ulasan. Silakan coba lagi.');
         });
       }
 
