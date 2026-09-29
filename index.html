@@ -228,6 +228,7 @@
         width: 100%;
         display: block;
         transition: transform 0.5s ease;
+        aspect-ratio: 4/3;
       }
 
       .galeri-wrapper:hover .galeri-img {
@@ -352,6 +353,23 @@
         background-color: #0284c7;
         border: none;
         box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.2);
+      }
+
+      /* KARTU ULASAN */
+      .review-box {
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .review-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 16px;
+        margin-bottom: 12px;
+      }
+
+      @media (max-width: 576px) {
+        .logo-img { max-width: 120px !important; }
       }
 
       @media (max-width: 768px) {
@@ -717,7 +735,7 @@
         </div>
       </div>
 
-      <!-- LAYANAN KAMI (DINAMIS DARI GOOGLE APPS SCRIPT) -->
+      <!-- LAYANAN KAMI -->
       <div id="layanan-section" class="pt-3 mb-5">
         <div class="text-center mb-4">
           <h3 class="text-navy fw-bold mb-1">Layanan Kami</h3>
@@ -733,17 +751,20 @@
 
       <!-- SECTION ULASAN MAHASISWA -->
       <div id="ulasan-section" class="pt-3 mb-5">
-        <div class="text-center mb-4">
-          <h3 class="text-navy fw-bold mb-1">Ulasan Mahasiswa</h3>
-          <p class="text-slate-muted">Pendapat dan masukan dari mahasiswa mengenai Perpustakaan IBITEK</p>
-          <button type="button" class="btn btn-primary rounded-pill mt-2" onclick="toggleReviewModal()">
-            <i class="fas fa-comment-dots me-2"></i>Tulis Ulasan
-          </button>
-        </div>
-        
-        <div class="card p-4 shadow-sm border-0">
-          <div id="review-list" style="max-height: 350px; overflow-y: auto; padding-right: 8px;">
-            <p class="text-muted text-center py-3">Memuat ulasan...</p>
+        <div class="card p-4 border-0 shadow-sm rounded-4 bg-white">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h3 class="text-navy fw-bold m-0"><i class="fas fa-comments text-primary me-2"></i>Ulasan Pemustaka</h3>
+              <p class="text-slate-muted small m-0">Pendapat dan saran dari civitas akademika IBITEK</p>
+            </div>
+            <button class="btn btn-primary rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalUlasan">
+              <i class="fas fa-pen me-2"></i>Tulis Ulasan
+            </button>
+          </div>
+          <div class="review-box" id="review-list">
+            <div class="text-center text-muted py-3">
+              <div class="spinner-border spinner-border-sm text-primary me-1"></div> Memuat ulasan...
+            </div>
           </div>
         </div>
       </div>
@@ -850,7 +871,38 @@
       </div>
     </div>
 
-    <!-- MODAL LIGHTBOX FOTO -->
+    <!-- MODAL FORM ULASAN -->
+    <div class="modal fade" id="modalUlasan" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+          <div class="modal-header bg-primary text-white border-0">
+            <h5 class="modal-header-title fw-bold m-0"><i class="fas fa-comment-dots me-2"></i>Tulis Ulasan Anda</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body p-4">
+            <form id="formUlasan" onsubmit="event.preventDefault(); submitUlasan();">
+              <div class="mb-3">
+                <label for="inputNama" class="form-label fw-semibold">Nama Lengkap</label>
+                <input type="text" class="form-control" id="inputNama" placeholder="Masukkan nama Anda" required>
+              </div>
+              <div class="mb-3">
+                <label for="inputTeks" class="form-label fw-semibold">Ulasan / Masukan</label>
+                <textarea class="form-control" id="inputTeks" rows="4" placeholder="Tuliskan ulasan atau saran Anda..." required></textarea>
+              </div>
+              <div class="d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-light rounded-pill" data-bs-dismiss="modal">Batal</button>
+                <button type="submit" id="btnKirimUlasan" class="btn btn-primary rounded-pill px-4">
+                  <span id="btnText"><i class="fas fa-paper-plane me-2"></i>Kirim</span>
+                  <span id="btnSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status"></span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL LIGHTBOX -->
     <div class="modal fade" id="lightboxModal" tabindex="-1" aria-labelledby="lightboxModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content bg-transparent border-0">
@@ -860,36 +912,6 @@
           <div class="modal-body text-center p-2">
             <img id="lightboxImage" src="" class="img-fluid rounded shadow-lg" alt="Zoom Foto Perpustakaan">
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- MODAL FORM TULIS ULASAN -->
-    <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content border-0 shadow-lg" style="border-radius: 16px;">
-          <div class="modal-header border-0 bg-primary text-white" style="border-top-left-radius: 16px; border-top-right-radius: 16px;">
-            <h5 class="modal-title fw-bold" id="reviewModalLabel"><i class="fas fa-comment-dots me-2"></i>Tulis Ulasan Anda</h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <form id="reviewForm" onsubmit="submitReview(event)">
-            <div class="modal-body p-4">
-              <div class="mb-3">
-                <label for="reviewName" class="form-label fw-semibold text-navy">Nama Lengkap</label>
-                <input type="text" class="form-control rounded-3" id="reviewName" placeholder="Masukkan nama Anda" required>
-              </div>
-              <div class="mb-3">
-                <label for="reviewText" class="form-label fw-semibold text-navy">Ulasan / Masukan</label>
-                <textarea class="form-control rounded-3" id="reviewText" rows="4" placeholder="Tulis pengalaman atau masukan Anda..." required></textarea>
-              </div>
-            </div>
-            <div class="modal-footer border-0 pt-0">
-              <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Batal</button>
-              <button type="submit" class="btn btn-primary rounded-pill px-4" id="btnSubmitReview">
-                Kirim Ulasan
-              </button>
-            </div>
-          </form>
         </div>
       </div>
     </div>
@@ -913,8 +935,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      let reviewModalObj;
-
       const iconMap = [
         "fa-book-reader",
         "fa-chair",
@@ -925,12 +945,11 @@
       ];
 
       window.onload = function() {
-        reviewModalObj = new bootstrap.Modal(document.getElementById('reviewModal'));
         muatLayananDariBackend();
-        loadUlasan();
+        muatUlasanDariBackend();
       };
 
-      // PROSES MENGAMBIL DATA LAYANAN
+      // 1. Dapatkan Data Layanan
       function muatLayananDariBackend() {
         if (typeof google !== 'undefined' && google.script && google.script.run) {
           google.script.run
@@ -947,13 +966,7 @@
 
       function renderLayanan(data) {
         var container = document.getElementById('daftar-layanan');
-        if (!container) return;
         container.innerHTML = ''; 
-
-        if (!data || data.length === 0) {
-          renderLayananFallback();
-          return;
-        }
 
         data.forEach(function(item, index) {
           var iconClass = iconMap[index % iconMap.length];
@@ -983,87 +996,79 @@
         renderLayanan(defaultData);
       }
 
-      // ULASAN MAHASISWA - MENGAMBIL & MENAMPILKAN DATA DARI GOOGLE SHEETS
-      function loadUlasan() {
+      // 2. Dapatkan Data Ulasan
+      function muatUlasanDariBackend() {
         if (typeof google !== 'undefined' && google.script && google.script.run) {
           google.script.run
             .withSuccessHandler(renderUlasan)
             .withFailureHandler(function(err) {
-              console.error("Gagal muat ulasan:", err);
-              renderUlasan([]);
+              console.error(err);
+              document.getElementById('review-list').innerHTML = '<div class="text-center text-muted py-3">Belum ada ulasan.</div>';
             })
             .getUlasan();
         } else {
-          renderUlasan([]);
+          document.getElementById('review-list').innerHTML = '<div class="text-center text-muted py-3">Fitur ulasan membutuhkan deployment Apps Script.</div>';
         }
       }
 
       function renderUlasan(data) {
-        const reviewList = document.getElementById('review-list');
-        if (!reviewList) return;
-        reviewList.innerHTML = ''; 
-
+        var container = document.getElementById('review-list');
         if (!data || data.length === 0) {
-          reviewList.innerHTML = '<p class="text-muted text-center py-3">Belum ada ulasan.</p>';
+          container.innerHTML = '<div class="text-center text-muted py-3">Belum ada ulasan. Jadilah yang pertama memberikan ulasan!</div>';
           return;
         }
 
-        // Tampilkan ulasan dari Google Sheets (paling baru berada di atas)
-        data.reverse().forEach(item => {
-          const html = `
-            <div class="p-3 mb-2 rounded" style="background: #f1f5f9;">
-              <strong>${item.nama}:</strong>
-              <p class="mb-0 text-slate-muted">${item.teks}</p>
+        container.innerHTML = '';
+        data.forEach(function(item) {
+          var html = `
+            <div class="review-card">
+              <div class="fw-bold text-navy"><i class="fas fa-user-circle me-2 text-primary"></i>${item.nama}</div>
+              <div class="text-slate-muted small mt-1">${item.teks}</div>
             </div>
           `;
-          reviewList.insertAdjacentHTML('beforeend', html);
+          container.innerHTML += html;
         });
       }
 
-      // KONTROL MODAL & SUBMIT ULASAN
-      function toggleReviewModal() {
-        if (reviewModalObj) {
-          reviewModalObj.toggle();
-        } else {
-          reviewModalObj = new bootstrap.Modal(document.getElementById('reviewModal'));
-          reviewModalObj.show();
-        }
-      }
-
-      function submitReview(event) {
-        event.preventDefault();
-        
-        const nama = document.getElementById('reviewName').value.trim();
-        const teks = document.getElementById('reviewText').value.trim();
-        const btnSubmit = document.getElementById('btnSubmitReview');
+      // 3. Simpan Ulasan Baru
+      function submitUlasan() {
+        var nama = document.getElementById('inputNama').value;
+        var teks = document.getElementById('inputTeks').value;
+        var btnKirim = document.getElementById('btnKirimUlasan');
+        var btnSpinner = document.getElementById('btnSpinner');
 
         if (!nama || !teks) {
-          alert("Nama dan ulasan wajib diisi!");
+          alert('Mohon isi nama dan ulasan Anda.');
           return;
         }
 
-        btnSubmit.disabled = true;
-        btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Mengirim...';
+        btnKirim.disabled = true;
+        btnSpinner.classList.remove('d-none');
 
         if (typeof google !== 'undefined' && google.script && google.script.run) {
           google.script.run
-            .withSuccessHandler(function() {
-              btnSubmit.disabled = false;
-              btnSubmit.innerHTML = 'Kirim Ulasan';
-              document.getElementById('reviewForm').reset();
-              toggleReviewModal();
-              loadUlasan();
+            .withSuccessHandler(function(res) {
+              btnKirim.disabled = false;
+              btnSpinner.classList.add('d-none');
+              alert('Terima kasih! Ulasan Anda berhasil disimpan.');
+              
+              document.getElementById('formUlasan').reset();
+              var modalEl = document.getElementById('modalUlasan');
+              var modal = bootstrap.Modal.getInstance(modalEl);
+              if (modal) modal.hide();
+
+              muatUlasanDariBackend();
             })
             .withFailureHandler(function(err) {
-              alert("Gagal menyimpan ulasan. Silakan coba lagi.");
-              btnSubmit.disabled = false;
-              btnSubmit.innerHTML = 'Kirim Ulasan';
+              btnKirim.disabled = false;
+              btnSpinner.classList.add('d-none');
+              alert('Gagal menyimpan ulasan. Silakan coba lagi.');
             })
             .simpanUlasan(nama, teks);
         } else {
-          alert("Lingkungan Apps Script tidak terdeteksi.");
-          btnSubmit.disabled = false;
-          btnSubmit.innerHTML = 'Kirim Ulasan';
+          btnKirim.disabled = false;
+          btnSpinner.classList.add('d-none');
+          alert('Pengiriman ulasan tidak dapat diproses (mode preview offline).');
         }
       }
 
